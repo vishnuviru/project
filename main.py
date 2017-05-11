@@ -1,6 +1,6 @@
 from Tollapp.models import Main
 import random
-for i in range(1,10):
+for i in range(1,1888):
     v_no = random.choice(['DL09ML6778','MH05TL9000','TN06BC2323','TN06CD1190','AP16T3680','KA19Y7777','MH11J8990','PY22K1919','GA01Q5233','GJ08U7567','TN02U0001','TN12T1234'])
     dh = random.randint(6, 9)
     dl = random.randint(4, 12)
