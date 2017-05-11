@@ -1,0 +1,667 @@
+﻿<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html lang="en">
+<!--<![endif]-->
+<head>
+	{% load static %}
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+     
+    <title>TAMILNADU MODERN CHECK POST MANAGEMENT</title>
+	
+	 
+	<!-- Bootstrap 3.3.6 -->
+	<script src="{% static 'js/sweetalert.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/sweetalert.css' %}"/>
+	<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"/>
+    <!--  Bootstrap Style -->
+	<script src="{% static 'js/clock.js' %}"></script>
+     <!--  Font-Awesome Style -->
+    <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet"/>
+     <!--  Font-Awesome Animation Style -->
+    <link href="{% static 'css/font-awesome-animation.css' %}" rel="stylesheet" />
+     <!--  Pretty Photo Style -->
+    <link href="{% static 'css/prettyPhoto.css' %}" rel="stylesheet" />
+
+	<!-- Ionicons -->
+    <link rel="stylesheet" href="{% static 'css/ionicons.min.css' %}"/>
+  
+    <link href=" {% static 'css/style.css' %}" rel="stylesheet" />
+
+
+	<script src= "{% static 'js/jquery.min.js' %}"></script>
+
+
+	<script src="{% static 'js/shortcut.js' %}" ></script>
+
+	<!-- javascript for printing-->
+
+<script>
+printDivCSS = new String ('<link href="myprintstyle.css" rel="stylesheet" type="text/css">')
+function printDiv(divId) {
+	window.frames["print_frame"].document.body.innerHTML=printDivCSS + document.getElementById(divId).innerHTML;
+	window.frames["print_frame"].window.focus();
+	window.frames["print_frame"].window.print();
+}
+
+
+</script>
+
+<style>
+input:out-of-range {
+border: 1px solid red;
+background-color: #ed6d6d;
+color : white;
+}
+
+input:in-range {
+border: 1px solid green;
+
+background-color: #75f97e;
+}
+
+input[type=text] {
+	
+	padding: 12px 20px;
+	margin: 8px 0;
+	box-sizing: border-box;
+	border: 1px solid blue;
+	border-radius: 5px;
+	font-variant: normal;
+	text-align: center;
+	font-size: 18px;
+	font-weight:bold;
+}
+
+.red{
+	background: #ed6d6d;
+}
+.green{
+	background:#75f97e;
+}
+.grey{
+	background:#a5a5a5;
+}
+.white{
+	background:#ffffff;
+}
+
+</style>
+<style>
+body {
+	font-family: "Lato", sans-serif;
+}
+
+.sidenav {
+	height: 100%;
+	width: 0;
+	position: fixed;
+	z-index: 1;
+	top: 0;
+	right: 0;
+	background-color: #111;
+	overflow-x: hidden;
+	transition: 0.5s;
+	padding-top: 60px;
+	text-align:center;
+}
+
+.sidenav a {
+	padding: 8px 8px 8px 32px;
+	text-decoration: none;
+	font-size: 25px;
+	color: #818181;
+	display: block;
+	transition: 0.3s
+
+}
+
+.sidenav a:hover{
+	color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+	position: absolute;
+	top: 0;
+	right: 25px;
+	font-size: 36px;
+	margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+.sidenav {padding-top: 15px;}
+.sidenav a {font-size: 18px;}
+}
+</style>
+
+<!------- slider full camera view -->
+<script>
+function openNav() {
+	document.getElementById("mySidenav").style.width = "100%";
+}
+
+function closeNav() {
+	document.getElementById("mySidenav").style.width = "0";
+}
+
+</script>
+
+<!------- hide DIV after timeout -->
+<script>
+
+setTimeout(function() {
+    $('#mydiv').fadeOut('fast');
+}, 2000);
+
+</script>
+
+
+<!------- activating shortcut keys -->
+<script>
+shortcut.add("Ctrl+p",function() {
+document.getElementById("print").submit();
+});
+
+shortcut.add("ctrl+p",function() {	
+	window.location.href = "/clear";
+});
+
+shortcut.add("enter",function() {
+document.getElementById("update").submit();
+});
+
+
+shortcut.add("",function() {
+	window.location.href = "/";	
+	
+});
+shortcut.add("Ctrl+r",function() {
+var retVal = confirm("Page Reload is blocked Do You Want to logout ");
+			if( retVal == true ){
+				window.location.href = "/logout";
+				return true;
+			}
+			else{
+				window.location.href = "#";
+				return false;
+			}
+			
+
+});
+
+shortcut.add("Ctrl+F5",function() {
+var retVal = confirm("Page Reload is blocked Do You Want to logout ");
+			if( retVal == true ){
+				window.location.href = "/logout";
+				return true;
+			}
+			else{
+				window.location.href = "#";
+				return false;
+			}
+			
+
+});
+
+shortcut.add("",function() {
+var retVal = confirm("Page Reload is blocked Do You Want To Logout");
+			if( retVal == true ){
+				window.location.href = "/logout";
+				return true;
+			}
+			else{
+				window.location.href = "#";
+				return false;
+			}
+			
+
+});
+</script>
+
+<!-- if browser is inactive for 2 minutes user will be logout   ---->
+<script>
+
+var IDLE_TIMEOUT = 30000000; //seconds
+var _idleSecondsTimer = null;
+var _idleSecondsCounter = 0;
+
+document.onclick = function() {
+    _idleSecondsCounter = 0;
+};
+
+document.onmousemove = function() {
+    _idleSecondsCounter = 0;
+};
+
+document.onkeypress = function() {
+    _idleSecondsCounter = 0;
+};
+
+_idleSecondsTimer = window.setInterval(CheckIdleTime, 1000);
+
+function CheckIdleTime() {
+     _idleSecondsCounter++;
+     var oPanel = document.getElementById("SecondsUntilExpire");
+     if (oPanel)
+         oPanel.innerHTML = (IDLE_TIMEOUT - _idleSecondsCounter) + "";
+    if (_idleSecondsCounter >= IDLE_TIMEOUT) {
+        window.clearInterval(_idleSecondsTimer);
+        alert("Time expired!");
+        document.location.href = "/logout";
+    }
+}
+
+
+</script>
+
+
+<style>
+.center {
+	margin: auto;
+	width: 100%;
+	border: 3px solid #ffffff;
+	padding: 10px;
+	background-color:#f7caca
+}
+
+.success {
+	margin: auto;
+	width: 100%;
+	border: 3px solid #ffffff;
+	padding: 10px;
+	background-color:#cbf9b6
+}
+</style>
+
+
+</head>
+
+<body>
+
+	<!-- this div for printing challan---->
+	<div id="div3" style="display:none;font-size:11px" ><img src="{% static 'image/tamillogo.png' %}" class="img-circle" style = "width:80px;height:80px;display:block;margin:auto" /><br><p style="font-size:13px">
+										
+										<strong> Vehicle Number :</strong> {{Vehicle_Number}} <br>
+										<strong> Date/Time 	:</strong>{{current_date}}<br>
+        								<strong>Trans ID : </strong>{{Transaction_Id}}<br>
+										<strong> Vehicle Direction :</strong>{{toll_dir}}<br>
+        								<strong> Lane Number	:</strong>{{lane_N}}	<br>
+        								<strong> Location	:</strong>{{toll_loc}}	<br>
+        								<strong> Issued by 	:</strong>{{User_Name}}<br>
+        								<strong> Vehicle Class	:</strong>{{Vehicle_class}}<br>
+        								<a style = "font-size:18px"><strong> Overall Status	:{{Vehicle_Status}}</strong><br></a>
+        								<strong> Permit Validity:</strong>{{Permit_va|date:'d-m-Y'}}<br>
+        								<br><img src="/media_san/barcode/{{filenames}}/" style = "height:70px;width:310px;display:block; margin: auto"/></p>
+										
+	</div>
+	<!-- iframe required for printing--->
+    <iframe name="print_frame" width="0" height="0" frameborder="0" src="about:blank"></iframe>
+
+
+<div class="navbar navbar-default navbar-fixed-top menu-back">
+    <div class="container text-left col-md-12 col-lg-12">
+        <div class="col-lg-1 col-md-1  ">
+			<img src="{% static 'image/tamillogo.png' %}"  class="img-circle" style = "width:80px;height:80px" />
+                
+        </div>
+            
+		<div class="col-md-3 col-lg-3 " style = "color:white;font-size:20px" >
+			<br>
+			<body onload="startTime()">
+			<a id="txt" style = "color:white"></a>
+		</div>
+			
+        <div class="col-md-2 col-lg-2 " style = "color:white;font-size:36px" >
+			<!--Location <input type="text" id="toll_loc" name="toll_loc" value="{{toll_loc}}" class="form-control btn round-large" style = "width:150px;font-size:18px" placeholder="Location">-->
+		  
+			<br>
+			{{toll_loc}}
+			<h6 style = "color:white;font-size:16px">location</h6>
+		  
+		  
+		</div>
+		<div class="col-md-2 col-lg-2 " style = "color:white;font-size:30px" >
+                
+			<!--<ul class="nav navbar-nav navbar-left ">
+              Vehicle Direction <input type="text" id="toll_dir" name="toll_dir" value="{{toll_dir}}"class="form-control btn round-large" style = "width:150px;font-size:18px" placeholder="Direction">-->
+			<br>
+			{{toll_dir}}
+			  
+			<h6 style = "color:white;font-size:16px">Direction</h6>
+		</div>
+        <div class="col-md-2 col-lg-2 " style = "color:white;font-size:30px" >
+			<br>
+			{{User_Name}}
+			<h6 style = "color:white;font-size:16px">User Name</h6>
+			<!--<input type = "text" id="User_Name" name="User_Name" value="{{User_Name}}"  class="form-control btn round-large" style = "width:150px;font-size:18px" placeholder ="Username">-->
+				
+			  
+		</div>
+		<div class="col-md-1 col-lg-1 " style = "color:white;font-size:30px" >
+			  <!--Lane No <input type="text" id="lane_N" name="lane_N" value="{{lane_N}}" class="form-control btn round-large" style = "width:80px;font-size:18px" placeholder="Lane no"> -->
+			<br>
+			{{lane_N}}
+				
+			<h6 style = "color:white;font-size:16px">lane</h6>
+			
+		</div>
+        <div class="col-md-1 col-lg-1" style = "color:white;font-size:16px" >
+			  <br>
+			  <!--<a method="post" href="/logout/"  type = "button" onclick="return confirm('Are You Sure You Want To Logout')" class="btn  btn-danger round-large  fa fa-power-off " style =" color:#ffffff; background-color: #191919;
+				border-color: #e5e5e5; width:90px;height:40px;font-size:18px">Logout</a>-->
+				<a href="/logout/"><i class="fa fa-power-off fa-2x" onclick="return confirm('Are You Sure You Want To Logout')" style =" color:#ffffff;" ></i></a><br>
+				<a href="/logout/"><i class="" onclick="return confirm('Are You Sure You Want To Logout')" style =" font-style:normal;color:#ffffff;background-color:#34296F" >Logout</i></a>
+                        
+        </div> 
+			
+    </div>
+
+</div>
+
+  
+  
+<br> 
+ 
+<!-- form /update/ status and vehicle class -->
+
+	<form action="/update/" id="update" method="POST">
+		<input type="hidden" name="vehicle_number" value="{{Vehicle_Number}}" />
+		<input type="hidden" name="Transaction" value="{{Transaction_Id}}" />
+		<input type="hidden" name="lane" value="{{Lane_Number}}" />
+		<input type="hidden" name="barcode" value="{{filenames}}" />
+		
+		
+		
+		<input type="hidden" name="height" value="{{h}}" />
+		<input type="hidden" name="width" value="{{w}}" />
+		<input type="hidden" name="length" value="{{l}}" />
+		<input type="hidden" name="axle" value="{{a}}" />
+		<input type="hidden" name="weight" value="{{Weight}}" />
+		<input type="hidden" name="color_h" value="{{color8}}" />
+		<input type="hidden" name="color_w" value="{{color9}}" />
+		<input type="hidden" name="color_l" value="{{color10}}" />
+		<input type="hidden" name="color_a" value="{{color11}}" />
+		<input type="hidden" name="color_weig" value="{{color_weight}}" />
+		
+		
+		
+<div class="row"> 
+<div class="col-md-12 ">
+	<div class="col-md-3 ">
+        <div class="panel  adjust-border-radius">
+            <div class="btn btn-primary btn-block btn-lg adjust-border-radius" style = "height:50px;font-size:24px;">
+                Vehicle Summary 			
+            </div>
+            <div class="panel-body  text-left ">
+			
+				
+				<table class = "color-palette  table text-left "  style = "font-size:14px">
+				
+		<form method="POST" id="submit" name="submit" action="/get_details/">
+						<input id="User_Name" value="{{User_Name}}" name="User_Name" type="hidden"/>
+						<input id="Password" name="Password" value="{{Password}}" type="hidden" />   
+						
+					
+					<tr>
+						<p style = "font-weight: bold;font-size:20px;text-align:left"> Vehicle Registration No<input onclick = "out()"  type ="text" id="Vehicle_Number" name="Vehicle_Number" value="{{Vehicle_Number}}"  class="" style = "font-size:30px;font-weight: bold;width:390px;height:60px" ></input>  </p>   
+					</tr>
+					
+					<tr>
+						<p style = "font-weight: bold;font-size:20px;text-align:left"> Overall Status 
+						<input  readonly type ="text" id="sta" name="sta" value="{{Vehicle_Status}}"  class="" style = "font-size:16px;font-weight: bold;width:250px;height:50px" ></input>
+						</p>
+					</tr>
+					<tr>
+						<th style = "font-weight: bold;font-size:20px">Vehicle Class
+							<select  name="class" style ="font-weight: bold;font-size:18px;width:160px;height:50px;border-style:solid;border-color:blue" class="btn white border-blue round-large">
+								<option  value="{{Vehicle_class}}">{{Vehicle_class}}</option>
+								<option  value="LCV"> LCV </option>
+								<option  value="LMV"> LMV </option>
+								<option  value="HMV"> HCV </option>
+								<option  value="HMV"> HMV </option>
+							</select>
+						</th>
+						<th style = "font-weight: bold;font-size:20px">Permission
+						
+							<select   name= "permit" style="font-weight: bold;font-size:18px;width:160px;height:50px;border-style:solid;border-color:blue" class="btn  border-blue round-large" >
+								<option  value ="{{permit}}">{{permit}}</option>
+								<option  value ="PERMIT"> PERMIT  </option>
+								<option  value ="DENIED"> DENIED</option>
+							</select>
+						</th>
+					</tr>
+				</table>
+				
+			
+			</div>
+		</div>
+	</div>
+	<div class="col-md-8 ">
+	
+		<div class="container">
+			<ul class="nav nav-tabs">
+				<li class="active"><a data-toggle="tab" style="font-size:16px;cursor:pointer" href="#home">vehicle</a></li>
+				<li ><a data-toggle="tab" style="font-size:16px;cursor:pointer" onclick="openNav()">fullscreen</a></li>
+   
+			</ul>
+
+			<div class="tab-content">
+				<div id="home" class="tab-pane fade in active">
+					<!--<img style="-webkit-user-select: none;" src="http://{{cam}}/axis-cgi/mjpg/video.cgi" width="820" height="240">-->
+					<img style="-webkit-user-select: none;" src="{% static 'image/image1.jpg' %}" width="100%" height="300">
+			
+					<!-- <iframe width="720" height="420" src="Http://192.168.30.10/axis-cgi/mjpg/video.cgi?resolution=320x240" frameborder="0" ></iframe> -->
+				</div>
+	
+
+	
+					<!--<form method="post" action="/printpage/"  onclick="javascript:printDiv('div3')"  >
+					<input type="hidden" id="an_da" name="an_da" value="{{an_da}}">
+					<input type="hidden" id="sen_time" name="sen_time" value="{{sen_time|date:'Y-m-d H:i:s'}}"> -->
+	
+				<div id="mySidenav" class="sidenav">
+					<br>
+					<span style="font-size:30px;cursor:pointer;color:white" onclick="closeNav()">&#9746;close</span>.
+					<!--<img style="-webkit-user-select: none;" src="http://{{cam1}}/axis-cgi/mjpg/video.cgi" width="100%" height="100%">
+				
+					<!--<iframe width = "100%" height = "100%" id="IDNAME" src="Http://192.168.30.15/axis-cgi/mjpg/video.cgi?resolution=320x240" frameborder="0" ></iframe>-->
+				
+				
+					<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+				
+				
+				</div>
+	
+   
+			</div>
+		</div>
+	</div>  
+
+ 
+	<div class=" col-md-1 " style = "font-size:14px">
+		<br><br><br><br>
+	
+		<button type="submit" id = "update" style = "background-color:#F7F7F7;border:white"><img  src="/static/image/Enter.png" style = "width:110px;height:60px" ></button>
+		<br>
+		<i style = "font-weight:bold;font-size:20px">(Allow Vehicle)</i>
+		
+		</form>
+
+
+		<form action = "javascript:printDiv('div3')" id = "print" >
+		<br>
+		
+		<!--<a type="submit" class="btn btn-d"   href="javascript:printDiv('div3')"><img src="/static/F2.png" style = "height:60px;width:60px"/></a><br>
+		<button type="submit" style = "background-color:#F7F7F7;border:white"><img  src="/static/image/print.png" style = "width:60px;height:60px" ></button><i style = "font-weight:bold;font-size:16px" id = "update">(Print Challan )</i>
+		-->
+		<a  href = "/clear/" onClick  =  "javascript:printDiv('div3')" style = "background-color:#F7F7F7;border:white"><img  src="/static/image/print.png" style = "width:80px;height:60px" ></a>
+		<br>
+		<i style = "font-weight:bold;font-size:20px"> (Print)</i>	
+	
+		</form>
+
+
+	</div>
+</div>
+</div>
+	
+	<div id = "mydiv" class = "{{color_success}}">
+		<center>
+			<p style = "font-size: 24px;color:green">{{success}}</p>
+		</center>
+	</div>
+	
+	<div class = "{{msg_color}}">
+		<center>
+			<p  style = "font-size: 24px;color:red" >{{ flag }}</p>
+			<p style = "font-size: 24px;color:red">{{ flag1 }}</p>
+		</center>
+	</div>
+	<br>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+       
+		<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 ">
+            <div class="panel  adjust-border-radius">
+                <div class="btn btn-primary btn-block btn-lg adjust-border-radius" style = "height:50px">
+                    <h4>Vehicle Details</h4>
+                </div>
+                <div class="panel-body  text-left ">
+					<table class = "table text-left " style = "font-size:12px">
+						<tr>
+							<th style = "font-weight: bold;font-size:16px">Vehicle Number<br><input readonly  type ="text" id="Vehicle_Number" name="Vehicle_Number" value="{{Vehicle_Number}}" class=" btn round-large" style = "width:160px;height:40px" ></input></th>
+							<th style = "font-weight: bold;font-size:16px">Registration Date <br><input readonly  type="text" id="registration_date" name="registration_date" value="{{registration_date|date:'Y-m-d'}}"  class=" btn border-blue round-large" style = "width:150px;height:40px"></input></th> 
+						</tr>
+						<tr>
+							<th style = "font-weight: bold;font-size:16px">class of Vehicle  <br><input readonly type="text"  id="Vehicle_class" name="Vehicle_class" value="{{Vehicle_class}}"  class=" btn border-blue round-large" style = "width:160px;height:40px"></input></th> 
+							<th style = "font-weight: bold;font-size:16px">Vehicle type <br><input readonly type="text" class=" btn border-blue round-large" id="Vehicle_Type" name="Vehicle_Type" value="{{Vehicle_Type}}" style = "width:160px;height:40px"></input></th> 
+						</tr>
+						<tr>
+							<th style = "font-weight: bold;font-size:16px">Chassis Number <br><input readonly  type="text" id="Chassis_Number" name="Chassis_Number" value="{{Chassis_Number}}"  class=" btn border-blue round-large" style = "width:160px;height:40px"></input></th>
+							<th style = "font-weight: bold;font-size:16px">Engine Number <br><input readonly type ="text" id="Engine_Number" name="Engine_Number" value="{{Engine_Number}}" class=" btn round-large" style = "width:160px;height:40px" ></input></th>				
+						</tr>
+						<tr>
+						
+							<th style = "font-weight: bold;font-size:16px">Engine Capacity<br> <input readonly type="text" id="cubic" name="cubic" value="{{cubic}}" class=" btn border-blue round-large" style = "width:160px;height:40px"></input></th> 
+							<th style = "font-weight: bold;font-size:16px">Vehicle Fuel Type <br><input readonly  type="text" id="fuel" name="fuel" value="{{fuel}}" class=" btn border-blue round-large" style = "width:160px;height:40px"></input></th> 
+						</tr>
+					</table>
+                            
+                </div>
+                        
+            </div>
+        </div>
+        <div class="col-lg-4- col-md-4 col-sm-4 col-xs-12">
+            <div class="panel  adjust-border-radius">
+                <div class="btn btn-primary btn-block btn-lg adjust-border-radius" style = "height:50px">
+                    <h4>Dynamic Changes Details</h4>
+                </div>
+                <div class="panel-body text-left">
+
+                    <table class = " table text-left " style = "font-size:14px">
+						<tr>
+							<th style = "font-weight: bold;font-size:16px">Pollution Validity <br><input readonly  type ="text"  id="Pollution_va"  name="Pollution_va" value="{{Pollution_va|date:'d-m-Y'}}"  class="{{color1}} btn border-blue round-large" style = "width:180px;height:40px" ></input></th>
+							<th style = "font-weight: bold;font-size:16px">Permit Validity  <br><input readonly  type = "text" id="Permit_va"   name="Permit_va" value="{{Permit_va|date:'d-m-Y'}}"  class="{{color2}} btn border-blue round-large" style = "width:180px;height:40px"></input></th> 
+						</tr>
+						<tr>
+							<th style = "font-weight: bold;font-size:16px">Fitness Validity<br><input readonly type="text"  id="Fitness_va"   name="Fitness_va" value="{{Fitness_va|date:'d-m-Y'}}"   class="{{color3}} btn border-blue round-large" style = "width:180px;height:40px"></input></th> 
+							<th style = "font-weight: bold;font-size:16px"> National Permit Validity <br><input readonly  type="text"  id="national"   name="national" value="{{national|date:'d-m-Y'}}" class="{{color4}} btn border-blue round-large" style = "width:180px;height:40px"></input></th> 
+						</tr>
+						<tr>
+							<th style = "font-weight: bold;font-size:16px">Tax Validity<br><input readonly type="text"   id="tax"  name="tax" value="{{tax|date:'d-m-Y'}}"  class="{{color5}} btn border-blue round-large"  style = "width:180px;height:40px"></input></th>
+							<th style = "font-weight: bold;font-size:16px">Authorization Validity <br><input readonly type ="text"  id="Authorization"   name="Authorization" value="{{Authorization|date:'d-m-Y'}}"   class="{{color6}} btn round-large" style = "width:180px;height:40px" ></input></th>				
+						</tr>
+						<tr>
+						
+							<th style = "font-weight: bold;font-size:16px">Insurance Validity<br> <input readonly type="text"  id="insurance" name="insurance"   value="{{insurance|date:'d-m-Y'}}" class="{{color7}} btn border-blue round-large" style = "width:180px;height:40px"></input></th> 
+							<th> <br></th> 
+						</tr>
+					</table>
+                </div>
+                        
+            </div>
+        </div>
+        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+            <div class="panel adjust-border-radius">
+                <div class="btn btn-primary btn-block btn-lg adjust-border-radius" style = "height:50px">
+                    <h4>WeighBridge Details</h4>
+                </div>
+                <div class="panel-body  text-left">
+
+                    <table class = "table text-left " style = "font-size:12px">
+						<tr>
+							<th style = "font-weight: bold;font-size:16px">Actual Weight (kg) <br><input readonly type ="text" id="Weight" name="Weight" value = "{{Weight}}" class =" {{color_weight}} btn round-large" style = "width:160px;height:40px" ></input></th>
+						
+						
+						</tr>
+						<tr>
+							<th style = "font-weight: bold;font-size:16px">Unladen Weight (kg) <br><input readonly type="text" id="Unladen_Weight" name="Unladen_Weight" value="{{Unladen_Weight}}" class=" btn border-blue round-large" style = "width:160px;height:40px"></input></th> 
+						
+						</tr>
+						<tr>
+							<th style = "font-weight: bold;font-size:16px">Laden Weight (kg)<br><input readonly type="text" id="ladden" name="ladden" value="{{ladden}}" class=" btn border-blue round-large" style = "width:160px;height:40px"></input></th> 
+						
+						</tr>
+						<tr>
+							<th><br><br><br><br></th> 
+						
+						</tr>
+					</table>
+                </div>
+                        
+            </div>
+		</div>
+		<div class="col-lg-3 col-md-2 col-sm-2 col-xs-12">
+            <div class="panel adjust-border-radius">
+                <div class="btn btn-primary btn-block btn-lg adjust-border-radius" style = "height:50px">
+                    <h4><th>Database Detail</th>
+                        <th></th><th></th><th> Profiler Detail</th>
+					</h4>
+                </div>
+                <div class="panel-body  text-left">
+                        
+                    <table class = "table text-left" style = "font-size:12px">
+						<tr>
+				
+							<th style = "font-weight: bold;font-size:16px">Height  <br><input readonly type="text" id="Diemension_h" name="Diemension_h" value="{{Diemension_h}}" class=" btn border-blue round-large" style = "width:90px;height:40px"></form></th>  
+							<th style = "font-weight: bold;font-size:16px">Height  <br><input readonly type="text" id="h" name="h" value="{{h}}"  class="{{color8}} btn border-blue round-large" style = "width:90px;height:40px"></form></th>  
+						</tr>
+						<tr>
+						
+						
+							<th style = "font-weight: bold;font-size:16px">Width <br><input readonly type="text" id="Diemension_b" name="Diemension_b" value="{{Diemension_b}}" class=" btn border-blue round-large" style = "width:90px;height:40px"></input></th>
+							<th style = "font-weight: bold;font-size:16px">Width <br><input readonly type="text" id="w" name="w" value="{{w}}"   class="{{color9}} btn round-large" style = "width:90px;height:40px"></input></th>
+						</tr>
+						<tr>
+						
+						
+							<th style = "font-weight: bold;font-size:16px">Length <br><input readonly type="text" id="Diemension_l"  name="Diemension_l" value="{{Diemension_l}}" class=" btn border-blue round-large" style = "width:90px;height:40px"></input></th>
+							<th style = "font-weight: bold;font-size:16px">Length <br><input readonly type="text"  id="l" name="l" value="{{l}}"   class="{{color10}} btn  round-large" style = "width:90px;height:40px"></input></th>
+						</tr>
+						<tr>
+						
+						
+							<th style = "font-weight: bold;font-size:16px">Axel Count <br><input readonly type="text" id="axle_d" name="axle_d" value="{{axle_d}}" class=" btn border-blue round-large" style = "width:90px;height:40px"></input></th>
+							<th style = "font-weight: bold;font-size:16px">Axel Count <br><input readonly type="text" id="a" name="a" value="{{a}}"   class="{{color11}} btn border-blue round-large" style = "width:90px;height:40px"></input></th>
+						</tr>
+					</table>
+				
+                </div>
+                        
+            </div>
+        </div>
+
+                
+                
+    </div>
+    
+    
+
+</body>
+</html>
+
+

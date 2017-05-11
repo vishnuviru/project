@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html lang="en">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+     <!--[if IE]>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <![endif]-->
+    <title>Speak Multipager Responsive Template</title>
+	
+	 {% load static %}
+  <!-- Bootstrap 3.3.6 -->
+  
+  <link rel="stylesheet" href="{% static 'bootstrap.css' %}"/>
+    <!--  Bootstrap Style -->
+   
+     <!--  Font-Awesome Style -->
+    <link href="{% static 'font-awesome.min.css' %}" rel="stylesheet"/>
+     <!--  Font-Awesome Animation Style -->
+    <link href="{% static 'font-awesome-animation.css' %}" rel="stylesheet" />
+     <!--  Pretty Photo Style -->
+    <link href="{% static 'prettyPhoto.css' %}" rel="stylesheet" />
+  <!--  <link href="{% static 'font.css' %}" rel="stylesheet" /> -->
+
+        <!--  Google Font Style -->
+   <!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' /> -->
+     <!--  Custom Style -->
+    <link href=" {% static 'style.css' %}" rel="stylesheet" />
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+<script
+src= "{% static 'javascript.js' %}"></script>
+	<!--<script src= "{% static 'jquery.min.js' %}"></script>-->
+	<script src= "{% static 'bootstrap.min.js' %}"></script>
+
+<script src="{% static 'shortcut.js' %}" ></script>
+<script src="{% static 'jkey.js' %}" ></script>
+<script src="{% static 'jquery1.9.1.min.js' %}" ></script>
+<script src="{% static 'bootbox.min.js' %}" ></script>
+    
+    
+
+<script>var init = [];</script>
+
+
+<script>
+shortcut.add("Ctrl+Shift",function() {
+ document.getElementById("submit").submit();
+});
+
+shortcut.add("",function() {
+	window.location.href = "/";	
+	
+});
+
+$(document).jkey('y+u',function(){
+    jkey.log('You pressed y and u!');
+});
+
+printDivCSS = new String ('<link href="myprintstyle.css" rel="stylesheet" type="text/css">')
+function printDiv(divId) {
+	window.frames["print_frame"].document.body.innerHTML=printDivCSS + document.getElementById(divId).innerHTML;
+	window.frames["print_frame"].window.focus();
+	window.frames["print_frame"].window.print();
+}
+
+
+</script>
+<style>
+input:out-of-range {
+  border: 1px solid red;
+  background-color: #ed6d6d;
+  color : white;
+}
+
+input:in-range {
+  border: 1px solid green;
+  
+  background-color: #75f97e;
+}
+
+input:valid {
+  border: 1px solid green;
+  
+  
+}
+
+.red{
+	background: #ed6d6d;
+}
+.green{
+	background:#75f97e;
+}
+
+</style>
+
+<style>
+body {
+    font-family: "Lato", sans-serif;
+}
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    text-align:center;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s
+
+}
+
+.sidenav a:hover{
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+</style>
+
+<script>
+function openNav() {
+    document.getElementById("mySidenav").style.width = "100%";
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+}
+
+</script>
+
+
+
+</head>
+<body>
+	
+	<div id="div3" style="display:none;font-size:11px" ><img src="{% static 'tamillogo.png' %}" class="img-circle" style = "width:80px;height:80px;display:block;margin:auto" /><br><p style="font-size:13px">
+										
+									<strong> Vehicle Number :</strong> {{Vehicle_Number}} <br>
+									<strong> Date/Time 	:</strong>{{current_date}}<br>
+        								<strong>Trans ID : </strong>{{tran}}<br>
+									<strong> Vehicle Direction :</strong>{{toll_dir}}<br>
+        								<strong> Lane Number	:</strong>{{lane_N}}	<br>
+        								<strong> Location	:</strong>{{toll_loc}}	<br>
+        								<strong> Issued by 	:</strong>{{User_Name}}<br>
+        								<strong> Vehicle Class	:</strong>{{Vehicle_class}}<br>
+        								<a style = "font-size:16px"><strong> Overall Status	:{{sta}}</strong><br></a>
+        								<strong> Permit Validity:</strong>{{Permit_va|date:'d-m-Y'}}<br>
+        								<br><img src="/media/images/{{filenames}}/" style = "height:70px;width:230px;display:block; margin: auto"/></div></p>
+
+    <iframe name="print_frame" width="0" height="0" frameborder="0" src="about:blank"></iframe>
+
+   <div class="navbar navbar-default navbar-fixed-top menu-back">
+        
+			<div class="container text-left col-md-12">
+            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12 ">
+           <img src="{% static 'tamillogo.png' %}"  class="img-circle" style = "width:80px;height:80px" />
+                
+            </div>
+            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12 " style = "color:white;font-size:16px" >
+                <br>
+				<ul class="nav navbar-nav navbar-left ">
+              Vehicle Direction <input type="text" id="toll_dir" name="toll_dir" value="{{toll_dir}}"class="form-control btn round-large" style = "width:150px;font-size:18px" placeholder="Direction">
+			  Lane No <input type="text" id="lane_N" name="lane_N" value="{{lane_N}}" class="form-control btn round-large" style = "width:80px;font-size:18px" placeholder="Lane no">     
+			  Location <input type="text" id="toll_loc" name="toll_loc" value="{{toll_loc}}" class="form-control btn round-large" style = "width:150px;font-size:18px" placeholder="Location">
+			  Username <input type = "text" id="User_Name" name="User_Name" value="{{User_Name}}"  class="form-control btn round-large" style = "width:150px;font-size:18px" placeholder ="Username" >
+              <body onload="startTime()">
+			  <a id="txt" style = "color:white"></a>
+			  </div>
+               <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12 " style = "color:white;font-size:16px" >
+			  <br>
+			  <a method="post" href="/logout/"  type = "button" class="btn  btn-danger round-large" style =" color:#ffffff; background-color: #191919;
+  border-color: #e5e5e5; width:90px;height:40px;font-size:18px">Logout</a>  
+                  </ul>      
+            </div>       
+            </div>
+
+        </div>
+
+    <!--./ Top Menu End -->
+
+<br>  
+<div class="row"> 
+<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 ">
+                    <div class="panel  adjust-border-radius">
+                        <div class="btn btn-primary btn-block btn-lg adjust-border-radius" style = "height:50px">
+                            <h4>Vehicle Summary</h4>
+                        </div>
+                        <div class="panel-body  text-left ">
+						<table class = "color-palette  table text-left " style = "font-size:14px">
+						<form method="POST" id="submit" name="submit" action="/get_details/">
+              {% csrf_token %}
+                 		<input id="User_Name" value="{{User_Name}}" name="User_Name" type="hidden"/>
+                 		<input id="Password" name="Password" value="{{Password}}" type="hidden" />                 		
+                 		<input id="sen_time" name="sen_time" value="{{sen_time|date:'Y-m-d H:i:s'}}" type="hidden" />
+                  	<input id="an_da" name="an_da" value="{{an_da|date:'Y-m-d H:i:s'}}" type="hidden" />
+                    <input id="wei_br" name="wei_br" value="{{wei_br|date:'Y-m-d H:i:s'}}" type="hidden" /> 
+                    <input id="Axle_ti" name="Axle_ti" value="{{Axle_ti|date:'Y-m-d H:i:s'}}"  type="hidden" />
+
+				<!-- flaggggg-->
+
+				<font size="4" face="Arial" color="Red">{{ flag1 }}</font>
+				<font size="4" face="Arial" color="Red">{{ flag }}</font>
+                  		
+
+
+
+
+						<tr>
+				<th>Vehicle Registration No<br><input type ="text" id="Vehicle_Number" name="Vehicle_Number" value="{{Vehicle_Number}}"  class=" btn round-large" style = "width:150px;height:40px" ></input></th>
+				<th><div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 " style = "font-size:16px">
+	
+
+				<input type = "Submit" value="Search" class="btn  btn-danger round-large" style= "color:#ffffff; background-color: #191919;
+ 				border-color: #e5e5e5; width:90px;height:40px;font-size:18px" ></input></th>
+				</div> 
+				
+				</tr></form>
+				<tr>
+				<th>Vehicle class <br><input type="text" id="Vehicle_class" name="Vehicle_class" value="{{Vehicle_class}}"  class=" btn border-blue round-large" style = "width:150px;height:40px"></input></th> 
+				<th>Overall Status <br><input type="text" class=" btn border-blue round-large" id="sta" name="sta" value="{{sta}}" style = "width:150px;height:40px"></input></th> 
+				</tr>
+				</table>
+</div>
+</div>
+    </div>
+
+	<div class="col-lg-7 col-md-4 col-sm-4 col-xs-12 ">
+	{% load static %}
+	<div class="container">
+	 <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" style="font-size:16px;cursor:pointer" href="#home">vehicle</a></li>
+    <li ><a data-toggle="tab" style="font-size:16px;cursor:pointer" onclick="openNav()">fullscreen</a></li>
+   
+  </ul>
+
+  <div class="tab-content">
+    <div id="home" class="tab-pane fade in active">
+<img style="-webkit-user-select: none;" src="http://{{cam}}/axis-cgi/mjpg/video.cgi" width="820" height="250">
+
+
+
+     <!-- <iframe width="720" height="420" src="Http://192.168.30.10/axis-cgi/mjpg/video.cgi?resolution=320x240" frameborder="0" ></iframe> -->
+    </div>
+	
+
+	
+	<!--<form method="post" action="/printpage/"  onclick="javascript:printDiv('div3')"  >
+	<input type="hidden" id="an_da" name="an_da" value="{{an_da}}">
+	<input type="hidden" id="sen_time" name="sen_time" value="{{sen_time|date:'Y-m-d H:i:s'}}"> -->
+
+<div id="mySidenav" class="sidenav">
+<br>
+
+  <span style="font-size:30px;cursor:pointer;color:white" onclick="closeNav()">&#9746;close</span>.
+<img style="-webkit-user-select: none;" name="cam1" src="http://{{cam1}}/axis-cgi/mjpg/video.cgi" width="100%" height="100%">
+
+<!--<iframe width = "100%" height = "100%" id="IDNAME" src="Http://192.168.30.15/axis-cgi/mjpg/video.cgi?resolution=320x240" frameborder="0" ></iframe>-->
+
+
+<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+  
+</div>
+	
+   
+</div>
+  </div>
+</div>  
+
+	<div class="col-lg-1 col-md-2 col-sm-2 col-xs-12 " style = "font-size:14px">
+	
+
+	<br><br>
+	<!--<form method="post" action="/printpage/"  onclick="javascript:printDiv('div3')"  >
+	<input type="hidden" id="an_da" name="an_da" value="{{an_da}}">
+	<input type="hidden" id="sen_time" name="sen_time" value="{{sen_time|date:'Y-m-d H:i:s'}}"> -->
+	
+	
+
+	<br><br>
+	<input type="hidden" class="btn btn-d"  style = " color:#ffffff; background-color: #191919;
+  border-color: #e5e5e5; width:60px;height:40px;font-size:18px" href="javascript:printDiv('div3')"></input><br><br>
+	
+		 
+
+
+
+
+	
+	</div>
+	</div>
+	
+    <!--./ Social Div End -->
+
+
+    
+	<br>
+	<br>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+       
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 ">
+                    <div class="panel  adjust-border-radius">
+                        <div class="btn btn-primary btn-block btn-lg adjust-border-radius" style = "height:50px">
+                            <h4>Vehicle Details</h4>
+                        </div>
+                        <div class="panel-body  text-left ">
+						<table class = "table text-left " style = "font-size:12px">
+						<tr>
+				<th>Vehicle Registration No<br><input type ="text" id="ANPR_Number" name="ANPR_Number" value="{{ANPR_Number}}" class=" btn round-large" style = "width:120px;height:40px" ></input></th>
+				<th>Registration Date <br><input type="text" id="registration_date" name="registration_date" value="{{registration_date|date:'Y-m-d'}}"  class=" btn border-blue round-large" style = "width:120px;height:40px"></input></th> 
+				</tr>
+				<tr>
+				<th>class of Vehicle  <br><input type="text"  id="Vehicle_class" name="Vehicle_class" value="{{Vehicle_class}}"  class=" btn border-blue round-large" style = "width:120px;height:40px"></input></th> 
+				<th>Vehicle type <br><input type="text" class=" btn border-blue round-large" id="vehicletype" name="vehicletype" value="{{vehicletype}}" style = "width:120px;height:40px"></input></th> 
+				</tr>
+				<tr>
+				<th>Chassis Number <br><input type="text" id="chassisno" name="chassisno" value="{{chassisno}}"  class=" btn border-blue round-large" style = "width:120px;height:40px"></input></th>
+				<th>Engine Number <br><input type ="text" id="engineno" name="engineno" value="{{engineno}}" class=" btn round-large" style = "width:120px;height:40px" ></input></th>				
+				</tr>
+				<tr>
+				
+				<th>Engine Cubic Capacity<br> <input type="text" id="cubic" name="cubic" value="{{cubic}}" class=" btn border-blue round-large" style = "width:120px;height:40px"></input></th> 
+				<th>Vehicle Fuel Type <br><input type="text" id="fuel" name="fuel" value="{{fuel}}" class=" btn border-blue round-large" style = "width:120px;height:40px"></input></th> 
+				</tr>
+				</table>
+                            
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="col-lg-4- col-md-4 col-sm-4 col-xs-12">
+                    <div class="panel  adjust-border-radius">
+                        <div class="btn btn-primary btn-block btn-lg adjust-border-radius" style = "height:50px">
+                            <h4>Dynamic Changes Details</h4>
+                        </div>
+                        <div class="panel-body text-left">
+
+                        <table class = " table text-left " style = "font-size:14px">
+						<tr>
+				<th>Pollution Validity <br><input type ="text"  id="Pollution_va"  name="Pollution_va" value="{{Pollution_va|date:'d-m-Y'}}"  onkeyup="checkDate('date1')" class="{{color2}} btn border-blue round-large" style = "width:180px;height:40px" ></input></th>
+				<th>Permit Validity  <br><input type = "text" id="Permit_va"   name="Permit_va" value="{{Permit_va|date:'d-m-Y'}}" onkeyup="checkDate('date2')" class="{{color1}} btn border-blue round-large" style = "width:180px;height:40px"></input></th> 
+				</tr>
+				<tr>
+				<th>Fitness Validity<br><input type="text"  id="Fitness_va"   name="Fitness_va" value="{{Fitness_va|date:'d-m-Y'}}"  onkeyup="checkDate('date3')" class="{{color8}} btn border-blue round-large" style = "width:180px;height:40px"></input></th> 
+				<th> National Permit Validity <br><input type="text"  id="national"   name="national" value="{{national|date:'d-m-Y'}}"  onkeyup="checkDate('date4')"class="{{color7}} btn border-blue round-large" style = "width:180px;height:40px"></input></th> 
+				</tr>
+				<tr>
+				<th>Tax Validity<br><input type="text"   id="tax"  name="tax" value="{{tax|date:'d-m-Y'}}"  class="{{color9}} btn border-blue round-large" onkeyup="checkDate('date5')" style = "width:180px;height:40px"></input></th>
+				<th>Authorization Validity <br><input type ="text"  id="authorization"   name="authorization" value="{{authorization|date:'d-m-Y'}}"  onkeyup="checkDate('date6')"  class="{{color3}} btn round-large" style = "width:180px;height:40px" ></input></th>				
+				</tr>
+				<tr>
+				
+				<th>Insurance Validity<br> <input type="text"  id="insurance" name="insurance"   value="{{insurance|date:'d-m-Y'}}"  onkeyup="checkDate('date7')"class="{{color10}} btn border-blue round-large" style = "width:180px;height:40px"></input></th> 
+				<th> <br></th> 
+				</tr>
+				</table>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                    <div class="panel adjust-border-radius">
+                        <div class="btn btn-primary btn-block btn-lg adjust-border-radius" style = "height:50px">
+                            <h4>WeighBridge Details</h4>
+                        </div>
+                        <div class="panel-body  text-left">
+
+                        <table class = "table text-left " style = "font-size:12px">
+						<tr>
+				<th>Actual Weight (kg) <br><input type ="text" id="weight" name="weight" value = "{{weight}}" class=" btn round-large" style = "width:120px;height:40px" ></input></th>
+				
+				</tr>
+				<tr>
+				<th>Laden Weight (kg)<br><input type="text" id="ladden" name="ladden" value="{{ladden}}" class=" btn border-blue round-large" style = "width:120px;height:40px"></input></th> 
+				
+				</tr>
+				<tr>
+				<th>Unladen Weight (kg) <br><input type="text" id="unladden" name="unladden" value="{{unladden}}" class=" btn border-blue round-large" style = "width:120px;height:40px"></input></th> 
+				
+				</tr>
+				<tr>
+				<th><br><br><br><br></th> 
+				
+				</tr>
+				</table>
+                        </div>
+                        
+                    </div>
+                </div>
+				<div class="col-lg-3 col-md-2 col-sm-2 col-xs-12">
+                    <div class="panel adjust-border-radius">
+                        <div class="btn btn-primary btn-block btn-lg adjust-border-radius" style = "height:50px">
+                            <h4><th>Database Detail</th>
+                             <th></th><th></th><th> Profiler Detail</th></h4>
+                        </div>
+                        <div class="panel-body  text-left">
+                        
+                        <table class = "table text-left" style = "font-size:12px">
+						<tr>
+				
+				
+				
+				<th>Height  <br><input type="text" id="Diemension_h" name="Diemension_h" value="{{Diemension_h}}" class=" btn border-blue round-large" style = "width:90px;height:40px"></form></th>  
+				<th>Height  <br><input type="text" id="h" name="h" value="{{h}}"  class="{{color4}} btn border-blue round-large" style = "width:90px;height:40px"></form></th>  
+				</tr>
+				<tr>
+				
+				
+				<th>Width <br><input type="text" id="Diemension_b" name="Diemension_b" value="{{Diemension_b}}" class=" btn border-blue round-large" style = "width:90px;height:40px"></input></th>
+				<th>Width <br><input type="text" id="w" name="w" value="{{w}}"   class="{{color6}} btn round-large" style = "width:90px;height:40px"></input></th>
+				</tr>
+				<tr>
+				
+				
+				<th>Length <br><input type="text" id="Diemension_l"  name="Diemension_l" value="{{Diemension_l}}" class=" btn border-blue round-large" style = "width:90px;height:40px"></input></th>
+				<th>Length <br><input type="text"  id="l" name="l" value="{{l}}"   class="{{color5}} btn  round-large" style = "width:90px;height:40px"></input></th>
+				</tr>
+				<tr>
+				 
+				
+				<th>Axel Count <br><input type="text" id="AXLE_C" name="AXLE_C" value="{{AXLE_C}}" class=" btn border-blue round-large" style = "width:90px;height:40px"></input></th>
+				<th>Axel Count <br><input type="text" id="a" name="a" value="{{a}}"   class="{{color}} btn border-blue round-large" style = "width:90px;height:40px"></input></th>
+				</tr>
+				</table>
+				
+                        </div>
+                        
+                    </div>
+                </div>
+
+                
+                
+    </div>
+    
+ <script>
+    $("#submit").change(function () {
+      var form = $(this).closest("form");
+      $.ajax({
+        url: form.attr("data-validate-username-url"),
+        data: form.serialize(),
+        dataType: 'json',
+        success: function (data) {
+          if (data.is_taken) {
+            alert(data.error_message);
+          }
+        }
+      });
+
+    });
+  </script>  
+
+</body>
+</html>
+

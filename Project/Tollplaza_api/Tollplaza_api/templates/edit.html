@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<title></title>
+</head>
+<body>
+	<form action = "/update/{{ edit.id }}" method="post">
+ 		{% csrf_token %}
+ 		<label for="name" > Name:<input type="text" name="name" id = "name" value="{{edit.name}}" placeholder="{{edit.name}}" /></label><br>
+ 		<label for="lane">Lane:<input type="text" name="lane" id = "lane" value="{{edit.lane}}" placeholder="{{edit.lane}}"></label><br>
+ 		<label for="direction" >Direction:<input type="text" name="direction" id = "direction" value="{{edit.direction}}" placeholder="{{edit.direction}}"/></label><br>
+ 		
+ 		<input type="submit" value ="Update"/>
+ 	</form>
+</body>
+</html>

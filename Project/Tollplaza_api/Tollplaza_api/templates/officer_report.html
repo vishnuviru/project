@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+     
+    <title>report</title>
+	
+	 {% load static %}
+  
+    <title>FormDen Example</title>
+</head>
+<body>
+{% load static %}
+
+	
+  <!-- Bootstrap 3.3.6 -->
+  
+  <link rel="stylesheet" href="{% static 'bootstrap.css' %}"/>
+<!--formden.js communicates with FormDen server to validate fields and submit via AJAX -->
+
+
+<!-- Special version of Bootstrap that is isolated to content wrapped in .bootstrap-iso -->
+<link rel="stylesheet" href="{% static 'bootstrap-iso.css' %}" />
+<link rel="stylesheet" href="{% static 'font-awesome.min.css' %}" />
+
+<!--Font Awesome (added because you use icons in your prepend/append)-->
+
+
+<!-- Inline CSS based on choices in "Settings" tab -->
+
+  <link rel="stylesheet" href="{% static 'bootstrap.css' %}"/>
+    
+   
+   <script src="{% static 'jspdf.min.js' %}" ></script>
+ 
+     
+    <link href="{% static 'font-awesome.min.css' %}" rel="stylesheet"/>
+     
+    <link href="{% static 'font-awesome-animation.css' %}" rel="stylesheet" />
+     
+    <link href="{% static 'prettyPhoto.css' %}" rel="stylesheet" />
+  <!--  <link href="{% static 'font.css' %}" rel="stylesheet" /> -->
+       
+    <!--<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />-->
+     
+    <link href=" {% static 'style.css' %}" rel="stylesheet" />
+<script src= "{% static 'jquery.min.js' %}"></script>
+	
+
+
+
+
+
+
+<style>
+
+input:valid {
+
+border: 2px solid #3e1a6b;
+}
+
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f7e4e3}
+
+th {
+    background-color: #aa0a0c;
+    color: white;
+}
+
+
+</style>
+
+	
+</head>
+  
+<!-- HTML Form (wrapped in a .bootstrap-iso div) -->
+<div class="navbar navbar-default navbar-fixed-top menu-back">
+        <div class="container text-left col-md-12">
+            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12 ">
+           <img src="{% static 'tamillogo.png' %}"  class="img-circle " style = "width:80px;height:80px" />
+                
+            </div>
+            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12 " style = "color:white;font-size:18px" >
+                <br>
+				<ul class="nav navbar-nav navbar-left ">
+                   
+              
+			  Location <input type="text" id="location" name="location" value="{{location}}" class="form-control btn round-large" style = "width:150px;font-size:18px" placeholder="Location">
+			  Officername <input type = "text" id="Username" name="Username" value="{{Username}}" class="form-control btn round-large" style = "width:150px;font-size:18px"placeholder="Username">
+              <body onload="startTime()">
+			  <a id="txt" style = "color:white"></a>
+			  </div>
+               <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12 " style = "color:white;font-size:18px" >
+			  <br>
+			  <a method="post" href="/"  type = "button" class="btn btn-primary mb1 bg-black"  style = " color:#ffffff; background-color: #191919;border-color: #e5e5e5; width:90px;height:40px;font-size:18px">Logout</a>  
+                  </ul>      
+            </div>       
+            </div>
+
+        </div>
+<br><br><br>
+
+
+
+<div class = "row">
+  
+<div class = "col-xs-2">
+  <th> ORDER BY </th> 
+  <td> <select name="searchfilter" class="searchfilter decorated form-control btn round-large" style = "width:150px;height:40px;border: 2px solid #3e1a6b" id="messagessearchfilter" aria-controls="messagelist" onchange="rcmail.filter_mailbox(this.value)">
+<option value="ALL" selected="selected">Select Option</option>
+<option value="VEHICLENUMBER">Monthly</option>
+</select>
+</div>
+<div class = "col-xs-4">
+<form method="post" action="/search_reports/">
+  <strong>FROM DATE </strong> <input type="date" name="value1" value=" " style = "width:160px;height:40px;background-color:#cdb4f7;color:black" class="form-control btn round-large"/>
+  <strong>TO DATE </strong> <input type="date" name="value2" value1="" style = "width:160px;height:40px;background-color:#cdb4f7;color:black"class="form-control btn round-large" />
+</div>
+<!-- Search Filter  -->
+ 
+<div id="searchfilter" class = "col-xs-2">
+<table>
+<tr>
+<!--<label for="messagessearchfilter" class="voice">Search By</label>-->
+ <th> ORDER BY </th> 
+   <td> <select name="searchfilter" class="searchfilter decorated form-control btn round-large" style = "width:150px;height:40px;border: 2px solid #3e1a6b" id="messagessearchfilter" aria-controls="messagelist" onchange="rcmail.filter_mailbox(this.value)">
+<option value="ALL" selected="selected">All</option>
+<option value="VEHICLENUMBER">Vehicle Number</option>
+<option value="TOLLBOOTHUSERNAME">TollBooth Usernaem</option>
+<option value="FINEAMOUNT">Fine Amount</option>
+<option value="STATUS">Status</option>
+<input type="hidden" name="Username" value="{{Username}}" />
+<input type="hidden" name="Password" value="{{Password}}" />
+
+
+</select>
+</td> 
+</tr>
+</table>
+</div>
+
+
+
+<!-- Extra JavaScript/CSS added manually in "Settings" tab -->
+<!-- Include jQuery -->
+
+<div class = "col-xs-1"> 
+  <button   class="form-control btn round-large"  style = " color:#ffffff; background-color: #191919;border-color: #e5e5e5; width:90px;height:40px;font-size:18px">Search</button></form>
+  </div>
+  <div class = "col-xs-3">
+</div>
+</div>
+
+
+
+
+
+
+
+<!-- <strong>FROM DATE </strong> <input   name="value1" value="{{vaues}}" style = "width:160px;height:40px;background-color:#cdb4f7;color:black" class="form-control btn round-large"/> 
+<strong>TO DATE </strong> <input   name="value2" value="{{vaues1}}" style = "width:160px;height:40px;background-color:#cdb4f7;color:black"class="form-control btn round-large" /> -->
+<!-- Include Date Range Picker -->
+<font size="4" face="Arial" color="Red">{{ flag }}</font>
+
+
+<br><br><br>
+<div id="container">
+  <div class="col-xs-10">
+                   
+                      
+			<table class = "table  text-right  color-palette " style = "font-size:12px;height:50px">
+			<tr>
+				<th>Timestamp </th>
+        <th>Fine Amount </th>
+        <th>Vehicle Number</th>
+        <th>Vehicle Status</th>
+        <th>Lane Number</th>
+        <th>Tollbooth Username </th>
+        <th>TransactionID </th>
+      </tr>
+
+
+
+		{% for item in timesta %}
+      <tr>
+        <td>{{item.Timestamp}}</td><td>{{item.Fine_Amount}}</td><td>{{item.Vehicle_Number}}</td><td>{{item.Vehicle_Status}}</td><td>{{item.Lane_Number}}</td><td>{{item.User_Name}}</td><td>{{item.Transaction_Id}}</td>
+      </tr>
+    {% endfor %}
+
+  </table>
+ 
+        
+  </div>
+</div>
+
+
+<div id="editor"></div>
+<button id="cmd" class="form-control btn round-large"  style = " color:#ffffff; background-color: #b23c3c;border-color: #e5e5e5; width:110px;height:40px;font-size:14px">download PDF</button>
+<!-- jsPDF('p','pt','a4') -->
+
+<script>
+var doc = new jsPDF('p','pt','a4');
+
+doc.setFontSize(1);
+doc.setLineWidth(1);
+
+var specialElementHandlers = {
+    '#editor': function (element, renderer) {
+        return true;
+    }
+};
+
+$('#cmd').click(function () {
+    
+    doc.fromHTML($('#container').html(), 10, 10, {
+        'width': 1800,
+            'elementHandlers': specialElementHandlers
+    });
+    doc.save('project.pdf');
+});
+</script>
+
+</body>
+
+</html>

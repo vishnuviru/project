@@ -1,5 +1,0 @@
-1.After login the anpr details along with sensor,weigh_bridge,axle count details are searched 
-2.here anpr button and search button will be there if anpr details are not came means then 
-go and press the anpr button there search the details.
-3.there search button will be there for searching and get the details from rto database.
-4.remaining all pages will be same.

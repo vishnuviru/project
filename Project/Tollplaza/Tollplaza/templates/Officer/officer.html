@@ -1,0 +1,515 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+     
+    <title>Tamilnadu modern check post</title>
+	
+	 {% load static %}
+  
+  
+  <script src="{% static 'js/sweetalert-dev.js' %}"></script>
+  <script src="{% static 'js/jquery-2.2.3.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/sweetalert.css' %}"/>
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"/>
+    <!--  Bootstrap Style -->
+   <script src="{% static 'js/clock.js' %}"></script>
+     <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}"/>
+  <!-- Ionicons -->
+    <link rel="stylesheet" href="{% static 'css/ionicons.min.css' %}"/>
+     <!--  Font-Awesome Animation Style -->
+    <link href="{% static 'css/font-awesome-animation.css' %}" rel="stylesheet" />
+     <!--  Pretty Photo Style -->
+    <link href="{% static 'css/prettyPhoto.css' %}" rel="stylesheet" />
+  <!--  <link href="{% static 'font.css' %}" rel="stylesheet" /> -->
+
+        <!--  Google Font Style -->
+   <!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' /> -->
+     <!--  Custom Style -->
+    <link href=" {% static 'css/style.css' %}" rel="stylesheet" />
+
+
+
+<script src="{% static 'js/shortcut.js' %}" ></script>
+
+
+<script>
+
+printDivCSS = new String ('<link href="myprintstyle.css" rel="stylesheet" type="text/css">')
+function printDiv(divId) {
+    window.frames["print_frame"].document.body.innerHTML=printDivCSS + document.getElementById(divId).innerHTML;
+    window.frames["print_frame"].window.focus();
+    window.frames["print_frame"].window.print();
+}
+
+shortcut.add("F1",function() {
+ document.getElementById("submit").submit();
+});
+
+shortcut.add("Ctrl+p",function() {
+ document.getElementById("print").submit();
+});
+
+shortcut.add("ctrl+p",function() {	
+	window.location.href = "/officer";
+});
+
+shortcut.add("enter",function() {
+ document.getElementById("search").submit();
+});
+
+
+</script>
+
+<!------- hide DIV after timeout -->
+<script>
+
+setTimeout(function() {
+    $('#mydiv').fadeOut('fast');
+}, 2000);
+
+</script>
+
+
+<style>
+input:out-of-range {
+  border: 1px solid red;
+  background-color: #ed6d6d;
+  color : white;
+  font-size:16px;
+}
+
+input [type=text]:in-range {
+  border: 1px solid green;
+  background-color: #75f97e;
+  font-size:16px;
+}
+
+input[type=text] {
+    
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 1px solid blue;
+    border-radius: 5px;
+    font-variant: normal;
+    text-align: center;
+    font-size: 18px;
+}
+
+.red{
+	background:#ed6d6d;
+}
+.green{
+	background:#75f97e;
+}
+.grey{
+	background:#a5a5a5;
+}
+.white{
+	background:#ffffff;
+}
+
+.center {
+    margin: auto;
+    width: 100%;
+    border: 3px solid #ffffff;
+    padding: 10px;
+	background-color:#f7caca
+}
+
+.success {
+	margin: auto;
+	width: 100%;
+	border: 3px solid #ffffff;
+	padding: 10px;
+	background-color:#cbf9b6
+}
+</style>
+
+<style>
+body {
+    font-family: "Lato", sans-serif;
+}
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    text-align:center;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s
+
+}
+
+.sidenav a:hover{
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+</style>
+	
+</head>
+
+<body>
+    <div id="div3" style="display:none" href = "/" ><img src="{% static 'image/tamillogo.png' %}" class="img-circle" style = "width:80px;height:80px;display:block;margin:auto" /><br><p style="font-size:13px">
+                                         
+										 <strong style = "font-size:18px">Overall Status:</strong><strong style = "font-size:18px">	{{ok_status}}</strong><br>
+										 <strong>Vehicle Number: </strong> 	{{Vehicle_Number}} <br>
+                                         <strong>Date/Time  :</strong>		{{current_date}}<br>
+                                         <strong>Trans ID : </strong>{{tran}}<br>
+										 <strong>Vehicle Direction:</strong>	{{direction}}<br>
+                                         <strong>Lane Number:</strong>		{{lane_N}}<br>
+                                         <strong>Location:</strong>		{{address}}<br>
+                                         <strong>Issued By:</strong>		{{RTO}}<br>
+                                         <strong>Vehicle Class:</strong>	{{Vehicle_class}}<br>
+                                         <strong>Fine Amount:</strong> <img src = "{% static 'image/rupee_symbol.png' %}" style = "height:9px;width:8px"/>{{amount}}<br>
+                                         <strong> Permit Validity:</strong>	{{Permit}}<br>
+										 <strong>Comments:</strong>		{{comm}}<br>
+                                         <br><img src="/media_san/barcode/{{filenames}}" style = "height:70px;width:230px;display:block; margin: auto"/></div></p>
+                                        <iframe name="print_frame" width="0" height="0" frameborder="0" src="about:blank"></iframe>
+  
+
+    
+
+   <div class="navbar navbar-default navbar-fixed-top menu-back">
+        
+			<div class="container text-left col-md-12 col-lg-12">
+            <div class="col-lg-1 col-md-1  ">
+           <img src="{% static 'image/tamillogo.png' %}"  class="img-circle" style = "width:80px;height:80px" />
+                
+            </div>
+            
+			<div class="col-md-3 col-lg-3 " style = "color:white;font-size:20px" >
+				
+				<br>
+				<body onload="startTime()">
+			  <a id="txt" style = "color:white"></a>
+			  </div>
+			
+            <div class="col-md-2 col-lg-2 " style = "color:white;font-size:30px" >
+			  <!--Location <input type="text" id="toll_loc" name="toll_loc" value="{{toll_loc}}" class="form-control btn round-large" style = "width:150px;font-size:18px" placeholder="Location">-->
+			  
+			  <br>
+			  {{loc}}
+			  <h6 style = "color:white;font-size:16px">location</h6>
+			  
+			  
+			  </div>
+			 
+            <div class="col-md-2 col-lg-2 " style = "color:white;font-size:30px" >
+				<br>
+			  {{User_Name}}
+			  <h6 style = "color:white;font-size:16px">Officer Name</h6>
+			  <!--<input type = "text" id="User_Name" name="User_Name" value="{{User_Name}}"  class="form-control btn round-large" style = "width:150px;font-size:18px" placeholder ="Username">-->
+              
+			  
+			  </div>
+			   <div class="col-md-3 col-lg-3" style = "color:white;font-size:16px" >
+				</div>			   
+               <div class="col-md-1 col-lg-1" style = "color:white;font-size:16px" >
+			  <br>
+			  <!--<a method="post" href="/logout/"  type = "button" onclick="return confirm('Are You Sure You Want To Logout')" class="btn  btn-danger round-large  fa fa-power-off " style =" color:#ffffff; background-color: #191919;
+  border-color: #e5e5e5; width:90px;height:40px;font-size:18px">Logout</a>-->
+				<a href="/logout/"><i class="fa fa-power-off  fa-2x" onclick="return confirm('Are You Sure You Want To Logout')" style =" color:#ffffff;" ></i></a><br>
+				<a href="/logout/"><i  onclick="return confirm('Are You Sure You Want To Logout')" style =" font-style: normal;color:#ffffff;background-color:#34296F" >Logout</i></a>
+                  </ul>      
+            </div> 
+			
+            </div>
+
+        </div>
+ 
+    
+   
+ 
+<br>  
+<div class="row"> 
+<div class="col-lg-4 col-md-4 col-sm-4 col-xs-2 ">
+                    <div class="panel adjust-border-radius">
+                        <div class="btn btn-primary btn-block btn-lg adjust-border-radius" style = "height:50px">
+                            <h4>Vehicle Summary</h4>
+                        </div>
+                        <div class="panel-body  text-left ">
+						<table class = "color-palette  table text-left " style = "font-size:16px">
+						<tr>
+        <form method="post" id = "search" action="/edit_property/" >
+          <input type="hidden"  name="User_Name" id="User_Name" value="{{User_Name}}" >
+          <input id="Password" value="{{Password}}" name="Password" type="hidden">
+		<th style = "font-weight: bold;font-size:16px"> TransactionID <br><input required  type = "text" id="transaction" name="transaction" value = "{{trans_id}}" class=" btn border-blue round-large" style = "font-weight: bold;font-size:20px;width:230px;height:50px"></input></th>
+        <th>
+		<!--<input type = "Submit" value="Search" class="form-control btn round-large" style= "color:#ffffff; background-color: #191919;
+        border-color: #e5e5e5; width:90px;height:40px;font-size:18px" ></input> -->
+		<br>
+		<button type="submit" style = "background-color:#ffffff;border:white"><img  src="/static/image/Enter.png" style = "width:90px;height:60px" ></button><i style = "font-weight:bold;font-size:20px">(Search)</i>
+		</th>
+
+        
+				
+				</tr>
+      </form>
+       
+
+
+        <form method="POST" id="submit" name="submit" action="/save_edit_property/">
+  
+              <input type="hidden"  name="User_Name" id="User_Name" value="{{User_Name}}" >
+              <input id="Password" value="{{Password}}" name="Password" type="hidden">
+              
+              <input id="transaction" name="transaction" value = "{{trans_id}}" type="hidden" >
+                <input  type ="hidden" id="Vehicle_Number" name="Vehicle_Number" value="{{Vehicle_Number}}" class=" btn round-large" style = "width:160px;height:40px" ></input>
+				<tr>
+				<th>Vehicle class <br><select  name="class" style ="font-weight: bold;font-size:16px;width:180px;height:40px;border-style:solid;border-color:#000033" class="btn white border-blue round-large">
+    <option  value="{{Vehicle_class}}">{{Vehicle_class}}</option>
+    <option  value="LCV"> LCV </option>
+    <option  value="LMV"> LMV </option>
+	<option  value="HMV"> HCV </option>
+	<option  value="HMV"> HMV </option>
+	
+  </select></th> 
+				<th>Overall Status <br><select  name="status" style ="font-weight: bold;font-size:16px;width:180px;height:40px;border-style:solid;border-color:#000033" class="btn white border-blue round-large">
+    <option  value="{{ok_status}}">{{ok_status}}</option>
+    <option  value="OK"> OK </option>
+    <option  value="NOTOK"> NOTOK </option></select>
+	</th> 
+				</tr>
+				</table>
+</div>
+</div>
+    </div>
+
+	<div class="col-lg-4 col-md-4 col-sm-4 col-xs-1 ">
+                    <div class="panel  adjust-border-radius">
+                        <div class="btn btn-primary btn-block btn-lg adjust-border-radius" style = "height:50px">
+                            <h4>Handling Exceptional cases</h4>
+                        </div>
+                        <div class="panel-body  text-left ">
+						<table class = "color-palette  table text-left "style = "font-size:16px">
+						<tr><select   name= "permission" style="width:250px;border-style:solid;border-color:#000033;font-weight: bold;font-size:16px; width:180px;height:40px" class="btn  border-blue round-large" >
+    <option  value ="{{permit_status}}">{{permit_status}}</option>
+    <option  value ="PERMIT"> PERMIT  </option>
+    <option  value ="DENIED"> DENIED</option>
+	
+  </select></tr>	
+<tr>  
+			<style type="text/css">
+				textarea.html-text-box {background-color:#ffffff;background-image:url(http://);background-repeat:no-repeat;background-attachment:fixed;border-width:2;border-style:solid;border-color:#000033;font-family:Arial;font-size:14pt;color:#000000;}
+				input.html-text-box {background-color:#6633FF;font-family:Arial;font-size:14pt;color:#FFFFFF;}
+			</style>
+<textarea name="comments" value="" cols="40" rows="5" class="html-text-box">{{comm}}</textarea><br> 
+</tr>				
+				
+				</table>
+</div>
+</div>
+    </div>
+	
+
+	<div class = "col-xs-2" id="div3" style = "font-size:16px">
+<h3>Total Fine Amount</h3>
+<input type="text"  id="amount" name="amount" value="{{amount}}"  class=" btn  round-large" style = "width:200px;height:50px;font-size:24px"></input>
+</div>
+<div class = "col-xs-2">
+    
+   <h3> Permit Validity</h3> <input type="date"  id="Permit"   name="Permit" value="{{Permit|date:'Y-m-d'}}"  class="{{color1}} btn border-blue round-large" style = "border: 1px solid blue;width:220px;height:50px;font-size:20px"></input> 
+        
+
+
+	
+	
+<br><br>
+<button type="submit" style = "background-color:#F7F7F7;border:white"><img  src="/static/image/F1.png" style = "width:80px;height:60px" ></button><i style = "font-weight:bold;font-size:20px">(Submit)</i>
+<br><br>
+<a  href = "/officer/" onClick  =  "javascript:printDiv('div3')" style = "background-color:#F7F7F7;border:white"><img  src="/static/image/print.png" style = "width:80px;height:60px" ></a><i style = "font-weight:bold;font-size:20px"> (Print)</i>	
+
+
+</div>
+</form>	
+ </div>
+ <!-- extra form function used for activating shortcut key ctrl+p -->
+<form action = "javascript:printDiv('div3')" id = "print" >
+</form> 
+  <!------------->  
+<div class = "{{clas}}">
+	<center>
+    <font size="4" face="Arial" color="Red">{{ flag }}</font>
+	<font size="4" face="Arial" color="Red">{{ flag1 }}</font>
+	</center>
+</div>
+<div id = "mydiv" class = "{{color_success}}">
+		<center>
+			<p style = "font-size: 24px;color:green">{{success}}</p>
+		</center>
+</div>
+
+	<br>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+       
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 ">
+                    <div class="panel  adjust-border-radius">
+                        <div class="btn btn-primary btn-block btn-lg adjust-border-radius" style = "height:50px">
+                            <h4>Vehicle Details</h4>
+                        </div>
+                        <div class="panel-body  text-left ">
+            <table class = "table text-left " style = "font-size:14px">
+            <tr>
+        <th style = "font-weight: bold;font-size:16px">Vehicle Number<br><input readonly type ="text" id="Vehicle_Number" name="Vehicle_Number" value="{{Vehicle_Number}}" class=" btn round-large" style = "width:160px;height:40px" ></input></th>
+        <th style = "font-weight: bold;font-size:16px">Registration Date <br><input readonly type="text" id="registration" name="registration" value="{{registration|date:'Y-m-d'}}"  class=" btn border-blue round-large" style = "width:160px;height:40px"></input></th> 
+        </tr>
+        <tr>
+        <th style = "font-weight: bold;font-size:16px">class of Vehicle  <br><input readonly  type="text"  id="Vehicle_class" name="Vehicle_class" value="{{Vehicle_class}}"  class=" btn border-blue round-large" style = "width:160px;height:40px"></input></th> 
+        <th style = "font-weight: bold;font-size:16px">Vehicle type <br><input readonly type="text" class=" btn border-blue round-large" id="Vehicle_Type" name="Vehicle_Type" value="{{Vehicle_Type}}" style = "width:160px;height:40px"></input></th> 
+        </tr>
+        <tr>
+        <th style = "font-weight: bold;font-size:16px">Chassis Number <br><input readonly type="text" id="chassis" name="chassis" value="{{chassis}}"  class=" btn border-blue round-large" style = "width:160px;height:40px"></input></th>
+        <th style = "font-weight: bold;font-size:16px">Engine Number <br><input readonly type ="text" id="engine" name="engine" value="{{engine}}" class=" btn round-large" style = "width:160px;height:40px" ></input></th>        
+        </tr>
+        <tr>
+        
+        <th style = "font-weight: bold;font-size:16px">Engine Capacity<br> <input readonly  type="text" id="cubic" name="cubic" value="{{cubic}}" class=" btn border-blue round-large" style = "width:160px;height:40px"></input></th> 
+        <th style = "font-weight: bold;font-size:16px">Vehicle Fuel Type <br><input readonly  type="text" id="fuel" name="fuel" value="{{fuel}}" class=" btn border-blue round-large" style = "width:160px;height:40px"></input></th> 
+        </tr>
+        </table>
+                            
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                    <div class="panel  adjust-border-radius">
+                        <div class="btn btn-primary btn-block btn-lg adjust-border-radius" style = "height:50px">
+                            <h4>Dynamic Changes Details</h4>
+                        </div>
+                        <div class="panel-body text-left">
+
+                        <table class = " table text-left " style = "font-size:14px">
+            <tr>
+        <th style = "font-weight: bold;font-size:16px">Pollution Validity <br><input readonly  type ="text"  id="Pollution_va"  name="Pollution_va" value="{{Pollution_va|date:'d-m-Y'}}"   class="{{color2}} btn border-blue round-large" style = "width:150px;height:40px" ></input></th>
+        <th style = "font-weight: bold;font-size:16px">Insurance Validity<br> <input readonly  type="text"  id="insurance" name="insurance"     value="{{insurance|date:'d-m-Y'}}" class="{{color10}}  btn border-blue round-large" style = "width:150px;height:40px"></input></th> 
+        	
+        <tr>
+        <th style = "font-weight: bold;font-size:16px">Fitness Validity<br><input readonly type="text"  id="Fitness_va"  name="Fitness_va" value="{{Fitness_va|date:'d-m-Y'}}"  class="{{color8}} btn border-blue round-large" style = "width:150px;height:40px"></input></th> 
+        <th style = "font-weight: bold;font-size:16px"> National Permit Validity <br><input readonly  type="text"  id="national"   name="national" value="{{national|date:'d-m-Y'}}" class="{{color7}} btn border-blue round-large" style = "width:150px;height:40px"></input></th> 
+        </tr>
+        <tr>
+        <th style = "font-weight: bold;font-size:16px">Tax Validity<br><input readonly type="text"   id="tax"  name="tax" value="{{tax|date:'d-m-Y'}}" class="{{color9}} btn border-blue round-large" style = "width:150px;height:40px"></input></th>
+        <th style = "font-weight: bold;font-size:16px">Authorization Validity <br><input readonly type ="text"  id="Authorization"  name="Authorization" value="{{Authorization|date:'d-m-Y'}}" class="{{color3}} btn round-large" style = "width:150px;height:40px" ></input></th>        
+        </tr>
+        <tr>
+     
+       
+        </tr>
+        </table>
+	<br><br><br>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                    <div class="panel adjust-border-radius">
+                        <div class="btn btn-primary btn-block btn-lg adjust-border-radius" style = "height:50px">
+                            <h4>WeighBridge Details</h4>
+                        </div>
+                        <div class="panel-body  text-left">
+
+                        <table class = "table text-left " style = "font-size:14px">
+            <tr>
+        <th style = "font-weight: bold;font-size:16px">Actual Weight (kg) <br><input readonly type ="text" id="Weight" name="Weight" value = "{{Weight}}" class=" btn round-large" style = "width:120px;height:40px" ></input></th>
+        
+        </tr>
+        <tr>
+        <th style = "font-weight: bold;font-size:16px">un Laden Weight (kg)<br><input readonly type="text"  class=" btn border-blue round-large" id="Unladen_Weight" name="Unladen_Weight" value="{{Unladen_Weight}}" style = "width:120px;height:40px"></input></th> 
+        
+        </tr>
+        <tr>
+        <th style = "font-weight: bold;font-size:16px">laden Weight (kg) <br><input readonly type="text" id="ladden" name="ladden" value="{{ladden}}" class=" btn border-blue round-large" style = "width:120px;height:40px"></input></th> 
+        
+        </tr>
+        <tr><th><br><br><br></th></tr>
+        
+        </table>
+                        </div>
+                        
+                    </div>
+                </div>
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                    <div class="panel adjust-border-radius">
+                        <div class="btn btn-primary btn-block btn-lg adjust-border-radius" style = "height:50px">
+                            <h4><th>Database and</th>
+                             <th></th><th></th><th> Profiler Detail</th></h4>
+                        </div>
+                        <div class="panel-body  text-left">
+                        
+                        <table class = "table text-left" style = "font-size:14px">
+            <tr>
+        
+        
+        
+        <th style = "font-weight: bold;font-size:16px">Height  <br><input readonly  type="text" id="Diemension_h" name="Diemension_h" value="{{Diemension_h}}" class=" btn border-blue round-large" style = "width:90px;height:40px"></input></th>  
+        <th style = "font-weight: bold;font-size:16px">Height  <br><input readonly type="text" id="h" name="h" value="{{h}}"  class="{{color4}} btn border-blue round-large" style = "width:90px;height:40px"></input></th>  
+        </tr>
+        <tr>
+        
+        
+        <th style = "font-weight: bold;font-size:16px">Width <br><input readonly type="text" id="Diemension_b" name="Diemension_b" value="{{Diemension_b}}" class=" btn border-blue round-large" style = "width:90px;height:40px"></input></th>
+        <th style = "font-weight: bold;font-size:16px">Width <br><input readonly type="text" id="w" name="w" value="{{w}}"  class= "{{color6}} btn round-large" style = "width:90px;height:40px"></input></th>
+        </tr>
+        <tr>
+        
+        
+        <th style = "font-weight: bold;font-size:16px">Length <br><input readonly type="text" id="Diemension_l"  name="Diemension_l" value="{{Diemension_l}}" class="} btn border-blue round-large" style = "width:90px;height:40px"></input></th>
+        <th style = "font-weight: bold;font-size:16px">Length <br><input readonly type="text"  id="l" name="l" value="{{l}}"  class="{{color5}} btn  round-large" style = "width:90px;height:40px"></input></th>
+        </tr>
+        <tr>
+         
+        
+        <th style = "font-weight: bold;font-size:16px">Axel Count <br><input readonly type="text" id="Axle_Count" name="Axle_Count" value="{{Axle_Count}}" class=" btn border-blue round-large" style = "width:90px;height:40px"></input></th>
+        <th style = "font-weight: bold;font-size:16px">Axel Count <br><input readonly type="text" id="a" name="a" value="{{a}}"  class="{{color}} btn border-blue round-large" style = "width:90px;height:40px"></input></th>
+        </tr>
+        </table>
+        
+                        </div>
+                        
+                    </div>
+                </div>
+
+             
+    
+
+
+
+ </div>
+</body>
+</html>
+
+

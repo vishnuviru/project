@@ -1,0 +1,172 @@
+<html>
+<head>
+<title>Sign Up</title>
+
+<style>
+
+.css_button1 {
+    font-size: 20px;
+    font-family: Arial;
+    font-weight: normal;
+    text-decoration: inherit;
+    -webkit-border-radius: 6px 6px 6px 6px;
+    -moz-border-radius: 6px 6px 6px 6px;
+    border-radius: 6px 6px 6px 6px;
+    border: 1px solid #01D201;
+    padding: 5px 14px;
+    cursor: pointer;
+    color: #FFFFFF;
+    display: inline-block;
+    background-color: #01D201;
+    <!-- float: right;
+    margin-right:30px; -->
+    height:50px;
+    width:150px;
+}
+
+.css_button1:hover {
+    background-color: #468ccf;
+}
+
+.css_button1:active {
+    position:relative;
+    top: 1px;
+}
+</style>
+
+
+
+<style>
+
+.css_button2 {
+    font-size: 20px;
+    font-family: Arial;
+    font-weight: normal;
+    text-decoration: inherit;
+    -webkit-border-radius: 6px 6px 6px 6px;
+    -moz-border-radius: 6px 6px 6px 6px;
+    border-radius: 6px 6px 6px 6px;
+    border: 1px solid #01D201;
+    padding: 5px 14px;
+    cursor: pointer;
+    color: #FFFFFF;
+    display: inline-block;
+    background-color: #01D201;
+    <!-- float: right;
+    margin-right:30px; -->
+    
+    height:50px;
+    width:56px;
+}
+
+.css_button2:hover {
+    background-color: #468ccf;
+}
+
+.css_button2:active {
+    position:relative;
+    top: 1px;
+}
+</style>
+
+
+
+
+
+
+</head>
+
+<body>
+
+<div style="background-color:#F1F1F1; width:625px; margin-left:200px; margin-top:75px;">
+<br />
+<center><font size="5" face="Arial">TOLLPLAZA EDIT LANE</font></center>
+<br />
+<font size="4" face="Arial">
+<table style="margin-left:10px;" cellspacing="10px;" cellpadding="10px;">
+<col width="200px" />
+<col width="350px" />
+<form action = "/edit_lanenumber/" name = "signup_data" method = "POST">
+
+
+<tr>
+<td>
+User  Name    *
+</td>
+<td>
+<input type="text"  value = "{{username}}" name = "username" id = "username"  style="width:350px; height:30px;">
+</td>
+</tr>
+
+
+
+
+
+<tr>
+<td>
+User Status   *
+</td>
+<td>
+  
+            <select required style="width:101%;height:25px;border-color:#F7F4F4;margin-left:-1%;
+    margin-top:-1%;" align="middle" id="default1" name="Direction" title="Choose default type"  >
+            <br>
+
+                <option value="{{default}}">{{default}} </option>
+                <option id="USER" name="USER" style="" value="Incoming"  >Incoming</option>
+                <option id="OFFICER" name="OFFICER" style="" value="Outgoing" >Outgoing</option>
+                
+
+            </select>
+</td>
+</tr>
+
+
+
+
+<tr>
+<td>
+Lane Number   *
+</td>
+<td>
+  
+            <select required style="width:101%;height:25px;border-color:#F7F4F4;margin-left:-1%;
+    margin-top:-1%;" align="middle" id="default2" name="lanenumber" title="Choose default type"  >
+            <br>
+
+                <option value="{{default}}">{{default}} </option>
+                <option id="USER" name="USER" style="" value="1" >1</option>
+                <option id="OFFICER" name="OFFICER" style="" value="2" >2</option>
+                <option id="OFFICER" name="OFFICER" style="" value="3" >3</option>
+                <option id="OFFICER" name="OFFICER" style="" value="4" >4</option>
+                <option id="OFFICER" name="OFFICER" style="" value="5" >5</option>
+                <option id="OFFICER" name="OFFICER" style="" value="6" >6</option>
+                <option id="OFFICER" name="OFFICER" style="" value="7" >7</option>
+                <option id="OFFICER" name="OFFICER" style="" value="8" >8</option>
+                <option id="OFFICER" name="OFFICER" style="" value="9" >9</option>
+                <option id="OFFICER" name="OFFICER" style="" value="10" >10</option>
+                <option id="OFFICER" name="OFFICER" style="" value="11" >11</option>
+                <option id="OFFICER" name="OFFICER" style="" value="12" >12</option>
+
+                
+
+            </select>
+</td>
+</tr>
+
+<tr>
+<td>
+</td>
+<td>
+<input type="submit" id="sign_up" value="Submit " class="css_button1">
+</td>
+</tr>
+<center><font size="5" face="Arial" color="Red">{{flag}}</font></center>
+</table>
+</form>
+
+<a href="/" method="POST" style="float:right; margin-right:100px; margin-top:-55px;" class="css_button2">Cancel</a> 
+</font>
+</div>
+</body>
+</html>

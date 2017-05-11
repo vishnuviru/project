@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Admin</title>
+  
+    {% load static %}
+  <meta http-equiv="refresh" content="">	
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- Bootstrap 3.3.6 -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"/>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}"/>
+  <!-- Ionicons -->
+    <link rel="stylesheet" href="{% static 'css/ionicons.min.css' %}"/>
+  <!-- Theme style -->
+    <link rel="stylesheet" href="{% static 'css/AdminLTE.min.css' %}"/>
+  <!-- AdminLTE Skins. Choose a skin from the css/skins
+       folder instead of downloading all of them to reduce the load. -->
+    <link rel="stylesheet" href="{% static 'css/_all-skins.min.css' %}"/>
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+<style>
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+	
+}
+
+td, th {
+	
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+	text-align: center;
+}
+
+th {
+	background-color: #2988c4;
+    color:white;
+	text-align: center;
+    
+}
+
+tr:nth-child(odd) {
+    background-color: #dddddd;
+}
+
+
+
+input {
+
+	width:190px;
+	height:40px;
+
+}
+button {
+	width:90px;
+	height:40px;
+	background-color: #000000;
+	color:white;
+}
+aa {
+	width:90px;
+	height:40px;
+	background-color: #ffffff;
+	color:black;
+}
+ 	
+<!--.blink_me {
+  animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {  
+  50% { opacity: 0; }
+}-->
+
+
+.red{
+	background: #ff4949;
+	border: 1px solid red
+}
+.green{
+	background:#04d10f;
+	border: 1px solid green
+}
+.blue{
+	background:#ffaa60;
+	border: 1px solid #ff851c
+
+</style>
+
+<script>
+var timer = function () {
+	window.location.reload(true);
+	
+  
+};
+var timeout = setTimeout(timer, 1233000);
+
+function move() {
+	clearTimeout(timeout);
+	
+	setTimeout(inn(), 53000);
+	
+};
+
+function out() {
+	var timeout = setTimeout(timer, 23000);
+	
+};
+
+function inn() {
+	var timeout = setTimeout(timer, 123000);
+	
+};
+</script>
+
+</head>
+
+
+<body class="hold-transition skin-blue sidebar-mini">
+<!-- Site wrapper -->
+
+
+  <header class="main-header" >
+    <!-- Logo -->
+    <a href="#" class="logo"style = "background-color: #34296F;height:80px" >
+      <!-- mini logo for sidebar mini 50x50 pixels -->
+      <span class="logo-mini"><img src="{% static 'image/tamillogo.png' %}"  class="img-circle " style = "width:50px;height:50px" /></span>
+      <!-- logo for regular state and mobile devices -->
+      <span class="logo-lg" ><img src="{% static 'image/tamillogo.png' %}"  class="img-circle " style = "width:100px;height:80px" /></span>
+    </a>
+    <!-- Header Navbar: style can be found in header.less -->
+	
+    <nav class="navbar navbar-static-top" style = "background-color:#34296F;height:80px">
+      <!-- Sidebar toggle button-->
+     
+	   <div class = "col-xs-2">
+	   </div>
+	  <div class = "col-xs-3">
+	  <br>
+	  <a style = "color:white ; font-size:22px">NETWORK STATUS MONITORING </a> 
+	  </div>
+     <!-- <div class = "col-xs-2">
+	  <br>
+	  Location <input type="text" id="address" name="address" value="{{address}}" class="form-control btn round-large" style = "width:150px;font-size:18px" placeholder="Location">
+	  </div>-->
+	  <div class = "col-xs-3">
+	  <br>
+	  <!--Officer name <input type = "text" id="Username" name="Username" value="{{Username}}" class="form-control btn round-large" style = "width:150px;font-size:18px"placeholder="Username">-->
+	 <body onload="startTime()">
+			  <a id="txt" style = "color:white ; font-size:22px"></a>
+	  </div>
+		
+      <div class="navbar-custom-menu" style = "background-color: #34296F">
+        <ul class="nav navbar-nav">
+		
+
+          <!-- Messages: style can be found in dropdown.less-->
+         
+          <!-- Notifications: style can be found in dropdown.less -->
+          
+          <!-- Tasks: style can be found in dropdown.less -->
+       
+          <!-- User Account: style can be found in dropdown.less -->
+		 
+          <li class="dropdown user user-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <!--<img src="../../dist/img/user2-160x160.jpg" class="user-image" alt="User Image">-->
+			  <br>
+              <span class="hidden-xs" style = "font-size:22px">{{User_Name}}</span>
+            </a>
+            
+          </li>
+		  
+          <!-- Control Sidebar Toggle Button -->
+          <li>
+		  
+            <a href="/logout"><i class="fa fa-power-off fa-3x" onclick="return confirm('Are You Sure You Want To Logout')" ></i></a>
+          </li>
+        </ul>
+      </div>
+	  
+    </nav>
+  </header>
+  
+
+  <!-- =============================================== -->
+
+  <!-- Left side column. contains the sidebar -->
+  <div class = "row" id = "content_div" style = "background:#dddddd">
+  <div class = "col-md-2" onmouseenter ="move()" onmouseleave ="out()" style = "background-color:#dddddd">
+    <section class=" content">
+
+      <!-- Default box -->
+      <div class="col-md-12 ">
+        <div class="dropdown" >
+    <button class="btn btn-primary dropdown-toggle" style = "width:200px" type="button" data-toggle="dropdown">OVERALL HEALTH
+    <span class="caret"></span></button>
+    <ul class="dropdown-menu" style = "width:200px"  >
+      <table border = "1">
+ 		<thead>
+ 			<tr>
+ 				
+ 			
+	 			<th align="right">Lane</th>
+	 			<th align="center">Overall Health</th>
+				</tr>
+				</thead>
+				
+				<tbody>
+		
+					{% for m in mon %}
+ 				<tr>
+	 				<td align="center">{{ m.Lane_Number }} </td>
+					<td align="center"><button  class="{{ m.Overall_Health }}  "  style = "width:20px;height:20px"></button></td>
+					</tr>
+					{% endfor %}
+
+				
+			</tbody>
+		</table>
+    </ul>
+  </div>
+  <br>
+  <div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle" style = "width:200px" type="button" data-toggle="dropdown">WEBAPP HEALTH
+    <span class="caret"></span></button>
+    <ul class="dropdown-menu" style = "width:200px"  >
+      <table border = "1">
+ 		<thead>
+ 			<tr>
+ 				
+ 			
+	 			<th align="right">Lane</th>
+	 			<th align="center">Webapp </th>
+				</tr>
+				</thead>
+				
+				<tbody>
+		
+					{% for m in mon %}
+ 				<tr>
+	 				<td align="center">{{ m.Lane_Number }} </td>
+					{% if  m.Webapp  == "red" %}
+						<td align="center"><i class="fa fa-check fa-3x" style = "color:#16a801;display:none" aria-hidden="true"></i><i class="fa fa-times fa-3x" style = "color:red" aria-hidden="true"></i></td>
+					{% else %}
+						<td align="center"><i class="fa fa-check fa-3x" style = "color:#16a801;" aria-hidden="true"></i><i class="fa fa-times fa-3x" style = "color:red;display:none" aria-hidden="true"></i></td>
+					
+					{% endif %}
+					</tr>
+					{% endfor %}
+
+				
+			</tbody>
+		</table>
+    </ul>
+  </div>
+  <br>
+  <div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle" style = "width:200px" type="button" data-toggle="dropdown">ANPR HEALTH
+    <span class="caret"></span></button>
+    <ul class="dropdown-menu" style = "width:200px"  >
+      <table border = "1">
+ 		<thead>
+ 			<tr>
+ 				
+ 			
+	 			<th align="right">Lane</th>
+	 			<th align="center">ANPR</th>
+				</tr>
+				</thead>
+				
+				<tbody>
+		
+					{% for m in mon %}
+ 				<tr>
+	 				<td align="center">{{ m.Lane_Number }} </td>
+					{% if   m.Anpr   == "red" %}
+						<td align="center"><i class="fa fa-check fa-3x" style = "color:#16a801;display:none" aria-hidden="true"></i><i class="fa fa-times fa-3x" style = "color:red" aria-hidden="true"></i></td>
+					{% else %}
+						<td align="center"><i class="fa fa-check fa-3x" style = "color:#16a801;" aria-hidden="true"></i><i class="fa fa-times fa-3x" style = "color:red;display:none" aria-hidden="true"></i></td>
+					
+					{% endif %}
+					</tr>
+					{% endfor %}
+
+				
+			</tbody>
+		</table>
+    </ul>
+  </div>
+  <br>
+  <div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle" style = "width:200px" type="button" data-toggle="dropdown">PROFILER HEALTH
+    <span class="caret"></span></button>
+    <ul class="dropdown-menu" style = "width:200px"  >
+      <table   border = "1">
+ 		<thead>
+ 			<tr>
+ 				
+ 			
+	 			<th align="right">Lane</th>
+	 			<th align="center">PROFILER</th>
+				</tr>
+				</thead>
+				
+				<tbody>
+		
+					{% for m in mon %}
+ 				<tr>
+	 				<td align="center">{{ m.Lane_Number }} </td>
+					{% if m.Profiler  == "red" %}
+						<td align="center"><i class="fa fa-check fa-3x" style = "color:#16a801;display:none" aria-hidden="true"></i><i class="fa fa-times fa-3x" style = "color:red" aria-hidden="true"></i></td>
+					{% else %}
+						<td align="center"><i class="fa fa-check fa-3x" style = "color:#16a801;" aria-hidden="true"></i><i class="fa fa-times fa-3x" style = "color:red;display:none" aria-hidden="true"></i></td>
+					
+					{% endif %}
+					</tr>
+					{% endfor %}
+
+				
+			</tbody>
+		</table>
+    </ul>
+  </div>
+  <br>
+  <div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle" style = "width:200px" type="button" data-toggle="dropdown">WEIGHBRIDGE HEALTH
+    <span class="caret"></span></button>
+    <ul class="dropdown-menu" style = "width:200px"  >
+      <table border = "1">
+ 		<thead>
+ 			<tr>
+ 				
+ 			
+	 			<th align="right">Lane</th>
+	 			<th align="center">Weighbridge</th>
+				</tr>
+				</thead>
+				
+				<tbody>
+		
+					{% for m in mon %}
+ 				<tr>
+	 				<td align="center">{{ m.Lane_Number }} </td>
+					{% if  m.Weighbridge  == "red" %}
+						<td align="center"><i class="fa fa-check fa-3x" style = "color:#16a801;display:none" aria-hidden="true"></i><i class="fa fa-times fa-3x" style = "color:red" aria-hidden="true"></i></td>
+					{% else %}
+						<td align="center"><i class="fa fa-check fa-3x" style = "color:#16a801;" aria-hidden="true"></i><i class="fa fa-times fa-3x" style = "color:red;display:none" aria-hidden="true"></i></td>
+					
+					{% endif %}
+					</tr>
+					{% endfor %}
+
+				
+			</tbody>
+		</table>
+    </ul>
+  </div>
+  <br>
+  <div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle" style = "width:200px" type="button" data-toggle="dropdown">BOOMBARRIER HEALTH
+    <span class="caret"></span></button>
+    <ul class="dropdown-menu" style = "width:200px"  >
+      <table border = "1">
+ 		<thead>
+ 			<tr>
+ 				
+ 			
+	 			<th align="right">Lane</th>
+	 			<th align="center">Boombarrier</th>
+				</tr>
+				</thead>
+				
+				<tbody>
+		
+					{% for m in mon %}
+ 				<tr>
+	 				<td align="center">{{ m.Lane_Number }} </td>
+					{% if  m.Boombarrier  == "red" %}
+						<td align="center"><i class="fa fa-check fa-3x" style = "color:#16a801;display:none" aria-hidden="true"></i><i class="fa fa-times fa-3x" style = "color:red" aria-hidden="true"></i></td>
+					{% else %}
+						<td align="center"><i class="fa fa-check fa-3x" style = "color:#16a801;" aria-hidden="true"></i><i class="fa fa-times fa-3x" style = "color:red;display:none" aria-hidden="true"></i></td>
+					
+					{% endif %}
+					</tr>
+					{% endfor %}
+
+				
+			</tbody>
+		</table>
+    </ul>
+  </div>
+       <!-- /.box-body -->
+        
+        <!-- /.box-footer-->
+      </div>
+
+	            <!-- /.box-body -->
+        
+        <!-- /.box-footer-->
+      
+      <!-- /.box -->
+
+    </section>
+	
+	</div>
+	<div class = "col-md-10" style = "background-color:#ffffff">
+	    <section class="col-md-12  content">
+
+      <!-- Default box -->
+      <div class=" box">
+        <div class="box-header with-border">
+          <h3 class="box-title">NETWORKING STATUS </h3>
+		
+
+          <div class="box-tools pull-right">
+            <!--<button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">-->
+              <!--<i class="fa fa-minus"></i></button>-->
+            
+          </div>
+        </div>
+        <div class="box-body">
+          <table id = "mytable" border = "1">
+ 		<thead>
+ 			<tr>
+ 				
+ 			
+	 			<th align="right">Lane</th>
+	 			<th align="center">Overall Health</th>
+	 			<th align="center">WebApp Health</th>
+	 			<th align="center">Anpr Health</th>
+	 			<th align="center">Profiler Health</th>
+	 			<th align="center">WeighBridge Health</th>
+				<th align="center">BoomBarrier Health</th>
+				<th align="center">TollUser Health</th>
+				<th align="center">Camera Health</th>
+				<th align="center">Location</th>
+				<th align="right">Timestamp</th>
+				
+
+	 		</tr>	
+
+ 		</thead>
+ 		<tbody>
+ 			{% for m in mon %}
+ 				<tr>
+	 				<td align="center">{{ m.Lane_Number }} </td>
+	 				{% if  m.Webapp  == "red" %}
+						<td align="center"><i class="fa fa-check fa-3x" style = "color:#16a801;display:none" aria-hidden="true"></i><i class="fa fa-times fa-3x" style = "color:red" aria-hidden="true"></i></td>
+					{% else %}
+						<td align="center"><i class="fa fa-check fa-3x" style = "color:#16a801;" aria-hidden="true"></i><i class="fa fa-times fa-3x" style = "color:red;display:none" aria-hidden="true"></i></td>
+					
+					{% endif %}
+					
+					{% if  m.Webapp  == "red" %}
+						<td align="center"><i class="fa fa-check fa-3x" style = "color:#16a801;display:none" aria-hidden="true"></i><i class="fa fa-times fa-3x" style = "color:red" aria-hidden="true"></i></td>
+					{% else %}
+						<td align="center"><i class="fa fa-check fa-3x" style = "color:#16a801;" aria-hidden="true"></i><i class="fa fa-times fa-3x" style = "color:red;display:none" aria-hidden="true"></i></td>
+					
+					{% endif %}
+	 				
+	 				{% if   m.Anpr   == "red" %}
+						<td align="center"><i class="fa fa-check fa-3x" style = "color:#16a801;display:none" aria-hidden="true"></i><i class="fa fa-times fa-3x" style = "color:red" aria-hidden="true"></i></td>
+					{% else %}
+						<td align="center"><i class="fa fa-check fa-3x" style = "color:#16a801;" aria-hidden="true"></i><i class="fa fa-times fa-3x" style = "color:red;display:none" aria-hidden="true"></i></td>
+					
+					{% endif %}
+					
+					{% if m.Profiler  == "red" %}
+						<td align="center"><i class="fa fa-check fa-3x" style = "color:#16a801;display:none" aria-hidden="true"></i><i class="fa fa-times fa-3x" style = "color:red" aria-hidden="true"></i></td>
+					{% else %}
+						<td align="center"><i class="fa fa-check fa-3x" style = "color:#16a801;" aria-hidden="true"></i><i class="fa fa-times fa-3x" style = "color:red;display:none" aria-hidden="true"></i></td>
+					
+					{% endif %}
+					
+					{% if  m.Weighbridge  == "red" %}
+						<td align="center"><i class="fa fa-check fa-3x" style = "color:#16a801;display:none" aria-hidden="true"></i><i class="fa fa-times fa-3x" style = "color:red" aria-hidden="true"></i></td>
+					{% else %}
+						<td align="center"><i class="fa fa-check fa-3x" style = "color:#16a801;" aria-hidden="true"></i><i class="fa fa-times fa-3x" style = "color:red;display:none" aria-hidden="true"></i></td>
+					
+					{% endif %}
+					
+					{% if  m.Boombarrier  == "red" %}
+						<td align="center"><i class="fa fa-check fa-3x" style = "color:#16a801;display:none" aria-hidden="true"></i><i class="fa fa-times fa-3x" style = "color:red" aria-hidden="true"></i></td>
+					{% else %}
+						<td align="center"><i class="fa fa-check fa-3x" style = "color:#16a801;" aria-hidden="true"></i><i class="fa fa-times fa-3x" style = "color:red;display:none" aria-hidden="true"></i></td>
+					
+					{% endif %}
+					
+					{% if  m.Tolluser  == "red" %}
+						<td align="center"><i class="fa fa-check fa-3x" style = "color:#16a801;display:none" aria-hidden="true"></i><i class="fa fa-times fa-3x" style = "color:red" aria-hidden="true"></i></td>
+					{% else %}
+						<td align="center"><i class="fa fa-check fa-3x" style = "color:#16a801;" aria-hidden="true"></i><i class="fa fa-times fa-3x" style = "color:red;display:none" aria-hidden="true"></i></td>
+					
+					{% endif %}
+					
+					{% if  m.Camera  == "red" %}
+						<td align="center"><i class="fa fa-check fa-3x" style = "color:#16a801;display:none" aria-hidden="true"></i><i class="fa fa-times fa-3x" style = "color:red" aria-hidden="true"></i></td>
+					{% else %}
+						<td align="center"><i class="fa fa-check fa-3x" style = "color:#16a801;" aria-hidden="true"></i><i class="fa fa-times fa-3x" style = "color:red;display:none" aria-hidden="true"></i></td>
+					
+					{% endif %}
+					
+					
+					
+					<td align="center">{{ m.Location }}</td>
+					<td align="center">{{ m.Timestamp  }}</td>
+					
+					 
+	 				
+	 				
+	 			</tr>
+				
+ 			{% endfor %}
+			<tr>
+			<td>{{t}}</td>
+			</tr>
+ 		</tbody>
+ 	</table>
+        </div>
+        <!-- /.box-body -->
+        
+        <!-- /.box-footer-->
+      </div>
+<br>
+      <!-- /.box -->
+
+    </section>
+    <!-- /.content -->
+  </div>
+  </div>
+  <!-- /.content-wrapper -->
+
+  <!--<footer class="main-footer">
+    <div class="pull-right hidden-xs">
+	
+      <b>Version</b> 2.3.7
+    </div>
+    <strong>Copyright &copy; 2014-2016 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights
+    reserved.
+  </footer>-->
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Create the tabs -->
+    <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
+      <li><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
+
+      <li><a href="/"  class="fa fa-gears"></a></li>
+    </ul>
+    <!-- Tab panes -->
+    
+    
+  </aside>
+  <!-- /.control-sidebar -->
+  <!-- Add the sidebar's background. This div must be placed
+       immediately after the control sidebar -->
+  <div class="control-sidebar-bg"></div>
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery 2.2.3 -->
+
+
+
+<script src="{% static 'js/jquery-2.2.3.min.js' %}"></script>
+<!-- Bootstrap 3.3.6 -->
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<!-- SlimScroll -->
+<script src="{% static 'js/jquery.slimscroll.min.js' %}"></script>
+<!-- FastClick -->
+<script src="{% static 'js/fastclick.min.js' %}"></script>
+<!-- AdminLTE App -->
+<script src="{% static 'js/app.min.js'%}"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="{% static 'js/demo.js' %}"></script>
+<script src="{% static 'js/clock.js' %}"></script>
+</body>
+</html>

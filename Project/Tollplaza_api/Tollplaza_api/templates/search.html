@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+ <html>
+ <head>
+ <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+     
+    <title>Edit Lane</title>
+	
+	 {% load static %}
+	 
+	 <link href=" {% static 'bootstrap.css' %}" rel="stylesheet" />
+<link href=" {% static 'style.css' %}" rel="stylesheet" />
+<link href=" {% static 'font-awesome.min.css' %}" rel="stylesheet" />
+
+<script src= "{% static 'functions.js' %}"></script>
+<link rel="stylesheet" href="{% static 'lightbox.min.css' %}"/>
+<script src= "{% static 'lightbox-plus-jquery.min.js' %}"></script>
+    <link href="{% static 'font-awesome-animation.css' %}" rel="stylesheet" />
+     
+    <link href="{% static 'prettyPhoto.css' %}" rel="stylesheet" />
+     
+    <link href=" {% static 'style.css' %}" rel="stylesheet" />
+	<script src= "{% static 'bootstrap.min.js' %}"></script>
+
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+	
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+}
+
+th {
+	background-color: #2988c4;
+    color:white;
+	text-align: center;
+    
+}
+
+tr:nth-child(odd) {
+    background-color: #dddddd;
+}
+
+
+
+input {
+
+	width:190px;
+	height:40px;
+
+}
+button {
+	width:90px;
+	height:40px;
+	background-color: #000000;
+	color:white;
+}
+a {
+	width:90px;
+	height:40px;
+	background-color: #ffffff;
+	color:black;
+}
+ 	</style>
+	
+
+
+	</head>
+ <body>
+ <div class="navbar navbar-default navbar-fixed-top menu-back">
+        <div class="container text-left col-md-12">
+            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12 ">
+           <img src="{% static 'tamillogo.png' %}"  class="img-circle " style = "width:80px;height:80px" />
+                
+            </div>
+            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12 " style = "color:white;font-size:18px" >
+                <br>
+				<ul class="nav navbar-nav navbar-left ">
+                   
+              
+			  Location <input type="text" id="address" name="address" value="{{address}}" class="form-control btn round-large" style = "width:150px;font-size:18px" placeholder="Location">
+			  Officername <input type = "text" id="Username" name="Username" value="{{Username}}" class="form-control btn round-large" style = "width:150px;font-size:18px"placeholder="Username">
+              <body onload="startTime()">
+			  <a id="txt" style = "color:white"></a>
+			  </div>
+               <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12 " style = "color:white;font-size:18px" >
+			  <br>
+
+			  <a method="post" href="/"  type = "button" class="btn btn-primary mb1 bg-black"  style = " color:#ffffff; background-color: #191919;border-color: #e5e5e5; width:90px;height:40px;font-size:18px">Logout</a>  
+                  </ul>      
+            </div>       
+            </div>
+
+        </div>
+ 
+<div class = "row">       
+<div class = "col-xs-3">
+</div>
+<div class = "col-xs-6">
+ 	<form action = "/search_image/" method="post">
+ 		
+ 	
+ 		 <div id="searchfilter" class = "col-xs-12">
+		 <br>
+<table>
+<tr>
+ <th> SEARCH BOX </th> 
+   <td><strong> </strong> <input type="text" name="value1" value=" " style = "width:200px;height:40px;background-color:#ffffff;color:black" class="form-control btn round-large"/></td>
+   <td> <select name="searchfilter" class="searchfilter decorated form-control btn round-large" style = "width:150px;height:40px;border: 2px solid #3e1a6b" id="messagessearchfilter" aria-controls="messagelist" onchange="rcmail.filter_mailbox(this.value)">
+<option value="" selected="selected">options</option>
+<option value="vehicle">Vehicle Number</option>
+<option value="transaction">Transcation</option></td>
+
+               <td>  <button />Search</button></td>
+</tr>
+
+</table>
+<br>
+</div>
+
+ 	</form>
+	
+ 	</div>
+	<div class = "col-xs-3">
+</div>
+</div>
+	<div  class = "col-xs-2">
+	
+	</div>
+	<div  class = "col-xs-10">
+ 	<table border = "1">
+	
+ 		<thead>
+		
+ 			<tr>
+ 				
+ 			
+	 			<th>Vehicle Number</th>
+	 			<th>Transaction Id</th>
+	 			<th>Time</th>
+	 			<th>Type</th>
+	 			<th>Snap Shot</th>
+				
+	 			
+
+	 		</tr>	
+
+ 		</thead>
+ 		<tbody>
+ 			{% for l in search %}
+ 				<tr>
+	 				<td style = "width:120px;height:220px">{{ l.Vehicle_Number }}</td>
+	 				<td style = "width:120px">{{ l.Transaction_Id }}</td>
+	 				<td style = "width:180px">{{ l.Timestamp }}</td>
+	 				<td style = "width:120px">{{ l.Vehicle_Type }}</td>
+	 				
+					<td>
+					<div>
+					<a class="example-image-link" href="{{l.Image_1}}" data-lightbox="example-set" ><img class="example-image" src="{{l.Image_1}}" style= "width:400px;height:200px" alt=""/></a>
+					<a class="example-image-link" href="{{l.Image_2}}"  data-lightbox="example-set" ><img class="example-image" src="{{l.Image_2}}" style= "width:400px;height:200px" alt="" /></a>
+						
+					</div>
+					</td>
+
+					
+				</tr>
+			{% endfor %}
+	 			
+ 			
+ 		</tbody>
+ 	</table>
+	</div>	
+
+
+<script src= "{% static 'lightbox-plus-jquery.js' %}"></script>
+
+
+ </body>
+ </html>
